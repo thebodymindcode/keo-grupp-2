@@ -855,7 +855,8 @@ function wireForm(){
 function initMap(){
   if(!window.L)return;const el=document.getElementById('keomap');if(!el||el._init)return;el._init=true;
   const lat=55.70258,lon=37.69617;
-  const map=L.map(el,{scrollWheelZoom:false}).setView([lat,lon],16);
+  const map=L.map(el,{scrollWheelZoom:false,attributionControl:true}).setView([lat,lon],16);
+  map.attributionControl.setPrefix(false);
   L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png',{maxZoom:19,attribution:'© OpenStreetMap, © CARTO'}).addTo(map);
   const icon=L.divIcon({className:'keopin',html:'<div class="keopin-dot"></div>',iconSize:[22,22],iconAnchor:[11,11]});
   L.marker([lat,lon],{icon:icon}).addTo(map).bindPopup('<b>KEO GROUP</b><br>2-й Южнопортовый проезд, 20А стр.4<br>+7 499 647-75-66').openPopup();
