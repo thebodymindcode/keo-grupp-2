@@ -381,6 +381,26 @@ PAGES["/"]=()=>`
     <div class="grid g3">${CASES.slice(0,3).map(caseCard).join('')}</div>
     <div style="margin-top:26px"><a class="btn ghost bracket" href="#/keysy">Смотреть все кейсы</a></div>
   </div></section>
+  <section style="padding-top:0"><div class="wrap">
+    <div class="sec-head"><div class="eyebrow">Как мы работаем</div><h2>Путь объекта под ключ</h2></div>
+    <div class="grid g4">${GEN_STEPS.map(([n,t,d])=>`<div class="card"><div style="font-size:38px;font-weight:800;color:var(--blue2);line-height:1;margin-bottom:12px">${n}</div><h3 style="font-size:17px;margin-bottom:8px">${esc(t)}</h3><p class="muted" style="font-size:13.5px;margin:0">${esc(d)}</p></div>`).join('')}</div>
+  </div></section>
+  <section style="padding-top:0"><div class="wrap"><div class="grid g2" style="gap:44px;align-items:center">
+    <div class="pic" style="position:relative;border-radius:var(--r-lg);overflow:hidden;box-shadow:var(--sh);aspect-ratio:16/11"><img src="./images/land/about.jpg" alt="О KEO GROUP" style="width:100%;height:100%;object-fit:cover"></div>
+    <div><div class="eyebrow">О компании</div><h2 style="margin-bottom:14px">Единое окно вместо десяти подрядчиков</h2>
+      <p class="muted" style="font-size:16px">Юристы, кадастровые инженеры и градостроители KEO GROUP работают в одной команде. Основатели в недвижимости больше 20 лет, у нас собственный проектный отдел, а специалисты прошли работу в Росреестре и БТИ. Берём весь цикл общения с госорганами на себя, результат закрепляем в договоре.</p>
+      <div style="margin-top:22px"><a class="btn ghost bracket" href="#/o-kompanii">Подробнее о компании</a></div></div>
+  </div></div></section>
+  <section style="padding-top:0"><div class="wrap">
+    <div class="sec-head"><div class="eyebrow">Кому помогаем</div><h2>Решения под вашу роль</h2></div>
+    <div class="grid g4">${SEG.slice(0,8).map(x=>`<a class="card" href="#/u/${x.link}" style="display:block;border-top:3px solid ${x.c}"><h3 style="font-size:16px;margin-bottom:8px">${esc(x.t)}</h3><p class="muted" style="font-size:13px;margin:0 0 12px">${esc(x.sol)}</p><span style="color:${x.c};font-weight:800;font-size:13px">Подробнее →</span></a>`).join('')}</div>
+    <div style="margin-top:22px"><a class="btn ghost bracket" href="#/segmenty">Все сегменты</a></div>
+  </div></section>
+  <section style="padding-top:0"><div class="wrap" style="max-width:920px">
+    <div class="sec-head"><div class="eyebrow">Вопросы</div><h2>Коротко о важном</h2></div>
+    ${FAQ_DATA[0].items.slice(0,5).map(([q,a])=>`<details class="faq"><summary>${esc(q)}</summary><p>${esc(a)}</p></details>`).join('')}
+    <div style="margin-top:18px"><a class="btn ghost bracket" href="#/faq">Все вопросы и ответы</a></div>
+  </div></section>
   ${band("Разберём ваш объект","Оставьте заявку, эксперт перезвонит и предложит понятный план действий по вашей ситуации.")}`;
 
 PAGES["/uslugi"]=()=>`<section><div class="wrap">
@@ -389,21 +409,51 @@ PAGES["/uslugi"]=()=>`<section><div class="wrap">
   ${GROUPS.map(g=>`<div style="margin-bottom:42px"><div style="display:flex;align-items:center;gap:12px;margin-bottom:18px"><span style="width:42px;height:42px;border-radius:12px;display:flex;align-items:center;justify-content:center;background:color-mix(in srgb,${g.c} 14%,#fff);color:${g.c}">${ICONS[g.key]}</span><h3 style="font-size:24px">${esc(g.title)}</h3></div><div class="grid g3">${svcByGroup(g.key).map(scard).join('')}</div></div>`).join('')}
 </div></section>${band("Не нашли свою ситуацию","Опишите задачу, подскажем направление и план. Часто решение есть даже там, где отказали другие.")}`;
 
-PAGES["/segmenty"]=()=>`<section><div class="wrap">
-  <p class="crumbs"><a href="#/">Главная</a> / <span>Сегменты</span></p>
-  <div class="sec-head"><div class="eyebrow">Кому помогаем</div><h2>Решения под вашу роль</h2></div>
-  <div class="grid g2">${SEGMENTS.map(s=>`<div class="card"><h3 style="font-size:18px;margin-bottom:8px">${esc(s.split(":")[0])}</h3><p class="muted" style="font-size:14px;margin:0">${esc(s.split(":")[1]||"")}</p></div>`).join('')}</div>
-</div></section>${band("Вы в одном из сегментов","Расскажите про объект, подберём услуги именно под вашу задачу.")}`;
+PAGES["/segmenty"]=()=>`
+ <section class="hero" style="padding-bottom:6px"><div class="wrap"><div class="row">
+   <div><p class="crumbs"><a href="#/">Главная</a> / <span>Сегменты</span></p>
+     <div class="eyebrow">Кому помогаем</div><h1>Решения под вашу ситуацию</h1>
+     <p class="lede">KEO GROUP работает с собственниками, девелоперами, ритейлом и арендаторами городского имущества. Найдите свой случай и сразу перейдите к нужной услуге.</p>
+     <div class="cta"><a class="btn primary bracket" href="#/kontakty">Получить разбор объекта</a><a class="btn ghost bracket" href="#/uslugi">Все услуги</a></div></div>
+   <div class="pic"><img src="./images/land/about.jpg" alt="Кому помогает KEO GROUP"><div class="badge"><b>B2B</b><span>собственники, девелоперы, инвесторы, сети</span></div></div>
+ </div></div></section>
+ ${trustBar()}
+ <section style="padding-top:10px"><div class="wrap"><div class="sec-head"><div class="eyebrow">Ваш случай</div><h2>Выберите, кто вы</h2><p class="lede" style="margin-top:12px">Под каждый сегмент своя боль и своё решение под ключ.</p></div>
+   <div class="grid g3">${SEG.map(x=>`<a class="case" href="#/u/${x.link}" style="display:block"><div class="ph"><img src="./images/land/${esc(x.img)}.jpg" alt="${esc(x.t)}" loading="lazy"></div><div class="b"><div style="height:4px;width:42px;border-radius:3px;background:${x.c};margin-bottom:12px"></div><h3 style="font-size:18px;margin-bottom:8px">${esc(x.t)}</h3><p class="muted" style="font-size:14px;margin:0 0 10px">${esc(x.pain)}</p><p style="font-size:14px;margin:0 0 14px;color:var(--navy);font-weight:600">${esc(x.sol)}</p><span class="more" style="color:${x.c};font-weight:800;font-size:13.5px">Перейти к услуге →</span></div></a>`).join('')}</div>
+ </div></section>
+ <section style="padding-top:0"><div class="wrap"><div class="sec-head"><div class="eyebrow">Почему КЕО</div><h2>Что общего в работе с каждым</h2></div>
+   <div class="grid g4">${WHY.map(([ic,t,d])=>`<div class="card"><div style="color:var(--blue2);margin-bottom:14px">${ic}</div><h3 style="font-size:17px;margin-bottom:8px">${esc(t)}</h3><p class="muted" style="font-size:13.5px;margin:0">${esc(d)}</p></div>`).join('')}</div>
+ </div></section>
+ ${band("Не нашли свой случай","Опишите объект и задачу, подберём услуги именно под вашу ситуацию.")}`;
 
-PAGES["/keysy"]=()=>`<section><div class="wrap">
-  <p class="crumbs"><a href="#/">Главная</a> / <span>Кейсы</span></p>
-  <div class="sec-head"><div class="eyebrow">Портфолио</div><h2>Наши объекты</h2><p class="lede" style="margin-top:12px">Объекты, которые узаконили, и объекты в управлении. Цифры из договоров и протоколов ГЗК.</p></div>
-  <h3 style="font-size:22px;margin:0 0 18px">Объекты, которые узаконили</h3>
-  <div class="grid g3">${CASES.map(caseCard).join('')}</div>
-  <h3 style="font-size:22px;margin:44px 0 18px">Объекты в управлении</h3>
-  <div class="grid g3">${CASES_MGMT.map(mgmtCaseCard).join('')}</div>
-  <p class="muted" style="margin-top:18px;font-size:14px">Скоро добавим объекты, которые зарегистрировали под ключ.</p>
-</div></section>${band("Хотите такой же результат","Покажем, как пройти ваш объект или передать его в управление, и зафиксируем план в договоре.")}`;
+PAGES["/keysy"]=()=>`
+ <section class="hero" style="padding-bottom:6px"><div class="wrap"><div class="row">
+   <div><p class="crumbs"><a href="#/">Главная</a> / <span>Кейсы</span></p>
+     <div class="eyebrow">Портфолио</div><h1>Объекты и результаты</h1>
+     <p class="lede">Реальные проекты KEO GROUP: узаконенные объекты с площадями, сроками и протоколами ГЗК, а также объекты, которые ведём в управлении. Цифры из договоров.</p>
+     <div class="cta"><a class="btn primary bracket" href="#/kontakty">Хочу такой же результат</a></div></div>
+   <div class="pic"><img src="./images/cases/pavoleckiy.jpg" alt="Объекты KEO GROUP"><div class="badge"><b>30+</b><span>реализованных проектов легализации</span></div></div>
+ </div></div></section>
+ ${trustBar()}
+ <section style="padding-top:10px"><div class="wrap"><div class="sec-head"><div class="eyebrow">Как мы доводим до результата</div><h2>Путь объекта к праву собственности</h2></div>
+   <div class="grid g4">
+     <div class="card"><div style="font-size:38px;font-weight:800;color:#7a5cff;line-height:1;margin-bottom:12px">01</div><h3 style="font-size:17px;margin-bottom:8px">Аудит и стратегия</h3><p class="muted" style="font-size:13.5px;margin:0">Разбираем объект, документы и риски, строим план</p></div>
+     <div class="card"><div style="font-size:38px;font-weight:800;color:#7a5cff;line-height:1;margin-bottom:12px">02</div><h3 style="font-size:17px;margin-bottom:8px">Документация</h3><p class="muted" style="font-size:13.5px;margin:0">ЗОС, АГР, паспорт безопасности, техническая база</p></div>
+     <div class="card"><div style="font-size:38px;font-weight:800;color:#7a5cff;line-height:1;margin-bottom:12px">03</div><h3 style="font-size:17px;margin-bottom:8px">Прохождение ГЗК</h3><p class="muted" style="font-size:13.5px;margin:0">Рабочая группа и комиссия, положительный протокол</p></div>
+     <div class="card"><div style="font-size:38px;font-weight:800;color:#7a5cff;line-height:1;margin-bottom:12px">04</div><h3 style="font-size:17px;margin-bottom:8px">Право собственности</h3><p class="muted" style="font-size:13.5px;margin:0">Исключение из 819-ПП и запись права в ЕГРН</p></div>
+   </div>
+ </div></section>
+ <section style="padding-top:0"><div class="wrap"><div class="sec-head"><div class="eyebrow">Легализация</div><h2>Объекты, которые узаконили</h2><p class="lede" style="margin-top:12px">Площади, сроки и округа Москвы. Все с положительным протоколом ГЗК.</p></div>
+   <div class="grid g3">${CASES.map(caseCard).join('')}</div>
+ </div></section>
+ <section style="padding-top:0"><div class="wrap"><div class="sec-head"><div class="eyebrow">Результат</div><h2>Что получает собственник</h2></div>
+   <div class="grid g3">${GROUP_RICH.legal.outcomes.map(([ic,t,d])=>`<div class="card"><div style="width:54px;height:54px;border-radius:14px;display:flex;align-items:center;justify-content:center;background:color-mix(in srgb,#7a5cff 14%,#fff);color:#7a5cff;margin-bottom:16px">${ic}</div><h3 style="font-size:18px;margin-bottom:8px">${esc(t)}</h3><p class="muted" style="font-size:14px;margin:0">${esc(d)}</p></div>`).join('')}</div>
+ </div></section>
+ <section style="padding-top:0"><div class="wrap"><div class="sec-head"><div class="eyebrow">Управление</div><h2>Объекты в управлении</h2><p class="lede" style="margin-top:12px">Коммерческая недвижимость под управлением KEO GROUP в Москве.</p></div>
+   <div class="grid g3">${CASES_MGMT.map(mgmtCaseCard).join('')}</div>
+ </div></section>
+ <section style="padding-top:0"><div class="wrap"><p class="muted" style="font-size:14px">Скоро добавим объекты, которые зарегистрировали под ключ, и кейсы по ДГИ и КРТ.</p></div></section>
+ ${band("Хотите такой же результат","Покажем, как пройти ваш объект или передать его в управление, и зафиксируем план в договоре.")}`;
 
 PAGES["/o-kompanii"]=()=>`
  <section class="hero"><div class="wrap"><div class="row">
@@ -445,15 +495,37 @@ PAGES["/o-kompanii"]=()=>`
  </div></div></section>
  ${band("Обсудим ваш объект","Оставьте заявку, эксперт KEO GROUP разберёт ситуацию и предложит план.")}`;
 
-PAGES["/ceny"]=()=>`<section><div class="wrap">
-  <p class="crumbs"><a href="#/">Главная</a> / <span>Цены</span></p>
-  <div class="sec-head"><div class="eyebrow">Цены</div><h2>Ориентиры по стоимости</h2><p class="lede" style="margin-top:12px">Это средние ориентиры по рынку Москвы. Точную смету считаем после разбора объекта, оплата по этапам, на руки закрывающие документы.</p></div>
-  ${GROUPS.map(g=>`<div class="card" style="margin-bottom:18px;border-top:3px solid ${g.c}">
-    <div style="display:flex;align-items:center;gap:11px;margin-bottom:8px"><span style="width:42px;height:42px;border-radius:12px;display:flex;align-items:center;justify-content:center;background:color-mix(in srgb,${g.c} 14%,#fff);color:${g.c}">${ICONS[g.key]}</span><h3 style="font-size:20px">${esc(g.title)}</h3></div>
-    ${svcByGroup(g.key).map(x=>`<div style="display:flex;justify-content:space-between;gap:16px;align-items:baseline;padding:13px 0;border-bottom:1px solid var(--line)"><a href="#/u/${x.slug}" style="font-weight:600;font-size:14.5px">${esc(x.name)}</a><span class="price" style="white-space:nowrap;color:${x.price&&x.price[0]==='о'&&x.price[1]==='т'?'var(--blue2)':'var(--ink3)'}">${esc(x.price)}</span></div>`).join('')}
-  </div>`).join('')}
-  <p class="muted" style="margin-top:18px;font-size:14px">«По запросу» значит цена индивидуальная и зависит от объекта (легализация, реконструкция, КРТ, надзор). <a href="#/kontakty" style="color:var(--blue2);font-weight:700">Запросите расчёт</a>, посчитаем по вашей ситуации.</p>
-</div></section>${band("Посчитаем смету по вашему объекту","Оставьте заявку, эксперт разберёт ситуацию и назовёт точную стоимость и сроки.")}`;
+PAGES["/ceny"]=()=>`
+ <section class="hero" style="padding-bottom:6px"><div class="wrap"><div class="row">
+   <div><p class="crumbs"><a href="#/">Главная</a> / <span>Цены</span></p>
+     <div class="eyebrow">Цены</div><h1>Прозрачная стоимость по этапам</h1>
+     <p class="lede">Это средние ориентиры по рынку Москвы. Точную смету называем после бесплатного разбора объекта. Оплата по этапам, без скрытых платежей, на руки закрывающие документы.</p>
+     <div class="cta"><a class="btn primary bracket" href="#/kontakty">Запросить расчёт</a></div></div>
+   <div class="pic"><img src="./images/land/about.jpg" alt="Цены KEO GROUP"><div class="badge"><b>по этапам</b><span>оплата без скрытых платежей</span></div></div>
+ </div></div></section>
+ <section style="padding-top:10px"><div class="wrap"><div class="sec-head"><div class="eyebrow">Как считаем</div><h2>Как формируется стоимость</h2></div>
+   <div class="grid g4">
+     <div class="card"><div style="font-size:38px;font-weight:800;color:var(--blue2);line-height:1;margin-bottom:12px">01</div><h3 style="font-size:17px;margin-bottom:8px">Бесплатный разбор</h3><p class="muted" style="font-size:13.5px;margin:0">Оцениваем объект, документы и перспективы, без оплаты</p></div>
+     <div class="card"><div style="font-size:38px;font-weight:800;color:var(--blue2);line-height:1;margin-bottom:12px">02</div><h3 style="font-size:17px;margin-bottom:8px">Смета по этапам</h3><p class="muted" style="font-size:13.5px;margin:0">Фиксируем стоимость и сроки в договоре, разбиваем на этапы</p></div>
+     <div class="card"><div style="font-size:38px;font-weight:800;color:var(--blue2);line-height:1;margin-bottom:12px">03</div><h3 style="font-size:17px;margin-bottom:8px">Оплата за результат</h3><p class="muted" style="font-size:13.5px;margin:0">По ряду направлений платите процент от достигнутого результата</p></div>
+     <div class="card"><div style="font-size:38px;font-weight:800;color:var(--blue2);line-height:1;margin-bottom:12px">04</div><h3 style="font-size:17px;margin-bottom:8px">Закрывающие документы</h3><p class="muted" style="font-size:13.5px;margin:0">Полный пакет для бухгалтерии, всё официально</p></div>
+   </div>
+ </div></section>
+ <section style="padding-top:0"><div class="wrap"><div class="sec-head"><div class="eyebrow">Ориентиры</div><h2>Стоимость по направлениям</h2></div>
+   ${GROUPS.map(g=>`<div class="card" style="margin-bottom:18px;border-top:3px solid ${g.c}">
+     <div style="display:flex;align-items:center;gap:11px;margin-bottom:8px"><span style="width:42px;height:42px;border-radius:12px;display:flex;align-items:center;justify-content:center;background:color-mix(in srgb,${g.c} 14%,#fff);color:${g.c}">${ICONS[g.key]}</span><h3 style="font-size:20px">${esc(g.title)}</h3></div>
+     ${svcByGroup(g.key).map(x=>`<div style="display:flex;justify-content:space-between;gap:16px;align-items:baseline;padding:13px 0;border-bottom:1px solid var(--line)"><a href="#/u/${x.slug}" style="font-weight:600;font-size:14.5px">${esc(x.name)}</a><span class="price" style="white-space:nowrap;color:${x.price&&x.price[0]==='о'&&x.price[1]==='т'?'var(--blue2)':'var(--ink3)'}">${esc(x.price)}</span></div>`).join('')}
+   </div>`).join('')}
+   <p class="muted" style="margin-top:18px;font-size:14px">«По запросу» значит цена индивидуальная и зависит от объекта (легализация, реконструкция, КРТ, надзор). <a href="#/kontakty" style="color:var(--blue2);font-weight:700">Запросите расчёт</a>, посчитаем по вашей ситуации.</p>
+ </div></section>
+ <section style="padding-top:0"><div class="wrap"><div class="sec-head"><div class="eyebrow">Честно</div><h2>Что входит в стоимость</h2></div>
+   <div class="grid g3">
+     <div class="card"><h3 style="font-size:17px;margin-bottom:8px">Без скрытых платежей</h3><p class="muted" style="font-size:14px;margin:0">Все работы и госплатежи проговариваем заранее, сюрпризов в счёте нет.</p></div>
+     <div class="card"><h3 style="font-size:17px;margin-bottom:8px">Гарантия в договоре</h3><p class="muted" style="font-size:14px;margin:0">Фиксируем результат, по ряду услуг работает условие результат или возврат.</p></div>
+     <div class="card"><h3 style="font-size:17px;margin-bottom:8px">Оплата по этапам</h3><p class="muted" style="font-size:14px;margin:0">Платите частями по мере выполнения, а не всё вперёд.</p></div>
+   </div>
+ </div></section>
+ ${band("Посчитаем смету по вашему объекту","Оставьте заявку, эксперт разберёт ситуацию и назовёт точную стоимость и сроки.")}`;
 
 PAGES["/blog"]=()=>`<section><div class="wrap">
   <p class="crumbs"><a href="#/">Главная</a> / <span>Блог</span></p>
@@ -621,6 +693,18 @@ const FAQ_DATA=[
   ["Какие объекты берёте в управление","Торговую, офисную, складскую и производственную недвижимость."],
   ["Что входит в управление","Техническое обслуживание, арендный процесс, финансовое управление, юридическое сопровождение и маркетинг объекта."],
   ["Помогаете ли инвесторам","Да: подбор объекта, проверка юридической чистоты, аудит доходности и окупаемости."]]},
+];
+
+/* ===== СЕГМЕНТЫ (расширенные) ===== */
+const SEG=[
+ {img:"stroyka",c:"#35b8fc",t:"Владельцам коммерческих зданий",pain:"Нужна реконструкция или расширение площадей, но страшно остановить бизнес и попасть в самострой.",sol:"Проведём реконструкцию без остановки аренды и узаконим новые площади.",link:"rekonstrukciya-zdaniy"},
+ {img:"legal",c:"#7a5cff",t:"Собственникам объектов в 819-ПП",pain:"Объект в реестре самостроя, под риском сноса и блокировки сделок.",sol:"Исключим из 819-ПП через ГЗК и признаем право собственности.",link:"legalizaciya-819pp"},
+ {img:"stroyka",c:"#35b8fc",t:"Девелоперам и инвесторам",pain:"Новое строительство тормозит на согласованиях и ГЗК.",sol:"Ведём как техзаказчик от участка и ГПЗУ до ввода и ЕГРН.",link:"novoe-stroitelstvo"},
+ {img:"kadastr",c:"#27c281",t:"Владельцам помещений с приостановками",pain:"Росреестр приостановил или отказал, объект завис.",sol:"Снимем приостановку и зарегистрируем право под ключ.",link:"rosreestr-priostanovki"},
+ {img:"nekapitalka",c:"#35b8fc",t:"Ритейлу и сетям",pain:"Павильоны и некапитальные объекты под угрозой сноса и штрафов.",sol:"Согласуем и легализуем по 636-ПП и 1255-ПП, защитим от сноса.",link:"nekapitalnye-obekty"},
+ {img:"krt",c:"#7a5cff",t:"Собственникам в зоне КРТ",pain:"Объект попал в комплексное развитие территории, компенсация занижена.",sol:"Добьёмся исключения из КРТ или справедливой компенсации через суд.",link:"krt-zashchita"},
+ {img:"dgi",c:"#ff8a3d",t:"Арендаторам и покупателям у ДГИ",pain:"Завышенная оценка при выкупе, претензии и споры с городом.",sol:"Выкуп по 159-ФЗ, споры с ДГИ, льготная аренда, оспаривание оценки.",link:"dgi-vykup-159fz"},
+ {img:"vri",c:"#7a5cff",t:"Собственникам и арендаторам земли",pain:"ВРИ не совпадает с задачей: не регистрируется аренда, нельзя строить.",sol:"Сменим ВРИ, скорректируем ПЗЗ, разработаем ПМТ.",link:"vri-zemelnogo-uchastka"},
 ];
 
 function servicePage(slug){
