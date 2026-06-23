@@ -150,6 +150,26 @@
   .clogos{display:flex;flex-wrap:wrap;gap:18px 40px;align-items:center;justify-content:center;padding:26px 28px;background:var(--white);border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--sh)}
   .clogo{font-weight:800;font-size:clamp(15px,2.2vw,20px);letter-spacing:.02em;color:#8a90a6;filter:grayscale(1);opacity:.75;transition:opacity .2s,color .2s}
   .clogo:hover{opacity:1;color:var(--navy)}
+  .onewin{background:linear-gradient(180deg,#fff,var(--soft))}
+  .funnel{max-width:840px;margin:0 auto;text-align:center}
+  .fchips{display:flex;flex-wrap:wrap;justify-content:center;gap:10px}
+  .fchip{background:var(--white);border:1px solid var(--line);border-radius:999px;padding:10px 18px;font-weight:700;font-size:13.5px;color:var(--navy);box-shadow:var(--sh)}
+  .farrow{margin:14px 0;display:flex;align-items:center;justify-content:center}
+  .farrow span{color:var(--ink3);font-size:12.5px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;position:relative;padding:0 30px}
+  .farrow span::before,.farrow span::after{content:"";position:absolute;top:50%;width:22px;height:1px;background:var(--line)}
+  .farrow span::before{left:0}.farrow span::after{right:0}
+  .farrow.farr2{height:22px}
+  .farrow.farr2::after{content:"↓";color:var(--blue2);font-size:20px;font-weight:800}
+  .fhub{background:linear-gradient(135deg,var(--navy),#5a3ad6);color:#fff;border-radius:var(--r);padding:30px 26px;box-shadow:var(--sh-h)}
+  .fhub b{font-size:clamp(21px,3.2vw,28px);display:block;margin-bottom:8px}
+  .fhub span{opacity:.92;font-size:14.5px;line-height:1.6}
+  .fout{margin-top:16px;font-weight:800;color:var(--navy);font-size:clamp(17px,2.6vw,22px)}
+  .owlist{max-width:940px;margin:36px auto 0;display:grid;grid-template-columns:1fr 1fr;gap:14px}
+  .owitem{display:flex;gap:14px;align-items:flex-start;background:var(--white);border:1px solid var(--line);border-radius:16px;padding:18px 20px;box-shadow:var(--sh)}
+  .owitem .oic{flex:0 0 auto;width:44px;height:44px;border-radius:12px;background:color-mix(in srgb,var(--blue) 14%,#fff);color:var(--blue2);display:flex;align-items:center;justify-content:center}
+  .owitem b{display:block;color:var(--navy);font-size:15px;margin-bottom:3px}
+  .owitem p{margin:0;color:var(--ink2);font-size:13.5px;line-height:1.55}
+  @media(max-width:760px){.owlist{grid-template-columns:1fr}.fchips{gap:8px}.fchip{font-size:12.5px;padding:8px 14px}}
   .cbtn{position:fixed;right:20px;bottom:20px;z-index:70;background:var(--blue);color:#fff;border:0;border-radius:999px;padding:15px 22px;font-family:var(--sans);font-weight:800;font-size:14.5px;cursor:pointer;box-shadow:0 12px 30px rgba(53,184,252,.4);display:inline-flex;align-items:center;gap:9px}
   .cbtn:hover{background:var(--blue2)}
   @supports(padding:max(0px)){.cbtn{bottom:max(20px,env(safe-area-inset-bottom))}}
@@ -397,7 +417,7 @@ function caseCard(c){return `<div class="case"><div class="ph"><img src="./image
 PAGES["/"]=()=>`
   <section class="hero"><div class="wrap"><div class="row">
     <div>
-      <div class="eyebrow">Коммерческая недвижимость в Москве</div>
+      <div class="eyebrow">Единое окно по недвижимости в Москве</div>
       <h1>Проведём объект от проблемы до права собственности</h1>
       <p class="lede">Полный цикл под ключ: аудит, проект, согласование, легализация, регистрация. Инженеры, кадастровые специалисты и юристы в одной команде. Результат закрепляем гарантией в договоре.</p>
       <div class="cta"><a class="btn primary bracket" href="#/kontakty">Получить разбор объекта</a><a class="btn ghost bracket" href="#/uslugi">Все услуги</a></div>
@@ -407,6 +427,26 @@ PAGES["/"]=()=>`
     </div>
   </div></div></section>
   ${trustBar()}
+  <section class="onewin"><div class="wrap">
+    <div class="sec-head"><div class="eyebrow">Единое окно</div><h2>Одно окно. Можно выдохнуть.</h2>
+      <p class="lede" style="margin-top:12px">Вы пришли туда, где недвижимостью в Москве занимаются под ключ. Не нужно собирать пятерых подрядчиков и бегать по инстанциям. Опишите объект, дальше всё берём на себя: проект, согласования, легализация, регистрация.</p></div>
+    <div class="funnel">
+      <div class="fchips"><span class="fchip">Строительство</span><span class="fchip">Легализация и земля</span><span class="fchip">Кадастр и Росреестр</span><span class="fchip">ДГИ и город</span><span class="fchip">Управление активами</span></div>
+      <div class="farrow"><span>всё сходится в одно окно</span></div>
+      <div class="fhub"><b>KEO GROUP, единое окно</b><span>Один договор. Один ответственный за объект. Всё общение с Росреестром, ДГИ, ГЗК и БТИ на нас.</span></div>
+      <div class="farrow farr2"></div>
+      <div class="fout">Документы на руках, объект работает, вы спокойны.</div>
+    </div>
+    <div class="owlist">
+      <div class="owitem"><div class="oic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18M9 9v11"/></svg></div><div><b>Один вход на всё</b><p>Вместо десяти подрядчиков одна команда. Вы общаетесь с одним менеджером по всему объекту.</p></div></div>
+      <div class="owitem"><div class="oic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M16 19v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="3"/><path d="M22 19v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div><div><b>Все специалисты в штате</b><p>Юристы, кадастровые инженеры и градостроители работают вместе, а не пересылают вас друг другу.</p></div></div>
+      <div class="owitem"><div class="oic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="19" r="2"/><circle cx="18" cy="5" r="2"/><path d="M8 19h6a4 4 0 0 0 0-8H10a4 4 0 0 1 0-8h6"/></svg></div><div><b>Полный цикл</b><p>От участка и ГПЗУ до выписки из ЕГРН. Ничего не теряется на стыке между конторами.</p></div></div>
+      <div class="owitem"><div class="oic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6l8-3z"/><path d="M9 12l2 2 4-4"/></svg></div><div><b>Госорганы берём на себя</b><p>Росреестр, ДГИ, ГЗК, БТИ, Москомархитектура. Очереди и бюрократия не ваша забота.</p></div></div>
+      <div class="owitem"><div class="oic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="9" r="5"/><path d="M8.5 13L7 21l5-2.5L17 21l-1.5-8"/></svg></div><div><b>Результат в договоре</b><p>Сроки и итог закрепляем письменно. Отвечаем за результат, а не за процесс.</p></div></div>
+      <div class="owitem"><div class="oic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M8.3 12.4l2.4 2.4 4.8-5.2"/></svg></div><div><b>Можно выдохнуть</b><p>Вы передали объект профессионалам. Дальше спокойствие и понятный план по шагам.</p></div></div>
+    </div>
+    <div style="text-align:center;margin-top:30px"><a class="btn primary bracket" href="#/kontakty">Доверить объект одному окну</a></div>
+  </div></section>
   <section style="padding-top:0"><div class="wrap">
     <div class="sec-head"><div class="eyebrow">Навигатор по задачам</div><h2>С какой задачей пришли</h2><p class="lede" style="margin-top:12px">Пять направлений закрывают весь путь объекта. Внутри отдельная страница на каждую из 31 услуги.</p></div>
     <div class="grid g3">${GROUPS.map(g=>`<a class="gcard" href="#/g/${g.key}" style="--c:${g.c}"><div class="ic">${ICONS[g.key]}</div><h3>${esc(g.title)}</h3><p>${esc(g.desc)}</p><span class="cnt">${svcByGroup(g.key).length} услуг →</span></a>`).join('')}</div>
