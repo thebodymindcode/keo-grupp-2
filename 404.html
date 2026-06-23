@@ -503,6 +503,12 @@ const EXTRA_FAQ={
 };
 Object.keys(EXTRA_FAQ).forEach(function(k){if(GROUP_RICH[k]&&GROUP_RICH[k].faq)GROUP_RICH[k].faq=GROUP_RICH[k].faq.concat(EXTRA_FAQ[k]);});
 
+function caseBlock(group){
+ if(group==='legal'||group==='stroyka')return `<section style="padding-top:0"><div class="wrap"><div class="sec-head"><div class="eyebrow" style="color:var(--blue2)">Наши кейсы</div><h2>Объекты, которые узаконили</h2><p class="lede" style="margin-top:12px">Реальные проекты компании с площадями, сроками и протоколами ГЗК.</p></div><div class="grid g3">${CASES.slice(0,6).map(caseCard).join('')}</div><div style="margin-top:24px"><a class="btn ghost bracket" href="#/keysy">Все кейсы</a></div></div></section>`;
+ if(group==='upravlenie')return `<section style="padding-top:0"><div class="wrap"><div class="sec-head"><div class="eyebrow" style="color:var(--gold)">Портфолио</div><h2>Объекты в управлении</h2></div><div class="grid g3">${CASES_MGMT.map(mgmtCaseCard).join('')}</div></div></section>`;
+ return '';
+}
+
 function servicePage(slug){
  if(slug==="upravlenie-nedvizhimostyu")return richMgmt();
  if(RICH[slug])return richLanding(slug);
@@ -538,9 +544,13 @@ function servicePage(slug){
    <div class="grid g4">${WHY.map(([ic,t,d])=>`<div class="card"><div style="color:${c};margin-bottom:14px">${ic}</div><h3 style="font-size:17px;margin-bottom:8px">${esc(t)}</h3><p class="muted" style="font-size:13.5px;margin:0">${esc(d)}</p></div>`).join('')}</div>
  </div></section>
  ${risks}
+ ${gr.who?`<section style="padding-top:0"><div class="wrap"><div class="sec-head"><div class="eyebrow" style="color:${c}">Когда нужна</div><h2>Кому подходит</h2></div><div class="grid g3">${gr.who.map(x=>`<div class="card" style="display:flex;gap:12px;align-items:flex-start"><span style="flex:0 0 auto;width:26px;height:26px;border-radius:8px;background:color-mix(in srgb,${c} 16%,#fff);color:${c};display:flex;align-items:center;justify-content:center;font-weight:800">✓</span><p class="muted" style="margin:0;font-size:14.5px">${esc(x)}</p></div>`).join('')}</div></div></section>`:''}
+ ${gr.outcomes?`<section style="padding-top:0"><div class="wrap"><div class="sec-head"><div class="eyebrow" style="color:${c}">Результат</div><h2>Что вы получаете на руки</h2></div><div class="grid g3">${gr.outcomes.map(([ic,t,dd])=>`<div class="card"><div style="width:54px;height:54px;border-radius:14px;display:flex;align-items:center;justify-content:center;background:color-mix(in srgb,${c} 14%,#fff);color:${c};margin-bottom:16px">${ic}</div><h3 style="font-size:18px;margin-bottom:8px">${esc(t)}</h3><p class="muted" style="font-size:14px;margin:0">${esc(dd)}</p></div>`).join('')}</div></div></section>`:''}
+ <section style="padding-top:0"><div class="wrap"><div class="sec-head"><div class="eyebrow" style="color:${c}">Почему КЕО</div><h2>Единое окно вместо десяти подрядчиков</h2></div><div class="grid g4">${WHY.map(([ic,t,dd])=>`<div class="card"><div style="color:${c};margin-bottom:14px">${ic}</div><h3 style="font-size:17px;margin-bottom:8px">${esc(t)}</h3><p class="muted" style="font-size:13.5px;margin:0">${esc(dd)}</p></div>`).join('')}</div></div></section>
  <section style="padding-top:0"><div class="wrap" style="max-width:860px"><div class="sec-head"><div class="eyebrow" style="color:${c}">Вопросы</div><h2>Частые вопросы</h2></div>
    ${faqList.map(([q,a])=>`<details class="faq"><summary>${esc(q)}</summary><p>${esc(a)}</p></details>`).join('')}
  </div></section>
+ ${caseBlock(s.g)}
  ${rel.length?`<section style="padding-top:0"><div class="wrap"><h3 style="margin-bottom:18px">Смежные услуги</h3><div class="grid g3">${rel.map(scard).join('')}</div></div></section>`:''}
  ${band("Разберём вашу ситуацию по этой услуге","Оставьте заявку, эксперт оценит объект и назовёт срок и стоимость по вашей ситуации.")}`;
 }
@@ -671,7 +681,7 @@ const RICH={
   tariffs:[["ВРИ без ПЗЗ","от 150 000 ₽","2-4 месяца","Если нужный ВРИ есть в регламенте зоны",true],["ВРИ через ПЗЗ","от 300 000 ₽","6-10 месяцев","Через изменение ПЗЗ, ДГП и ГЗК",false],["ПМТ","от 300 000 ₽","3-6 месяцев","Корректировка или разработка проекта межевания",false]],
   faq:[["Почему Росреестр не регистрирует аренду","Назначение помещения должно соответствовать ВРИ участка по ст. 37 ГрК РФ."],["Разница ВРИ с ПЗЗ и без","Если ВРИ есть в регламенте зоны, нужно только заявление. Если нет, меняем ПЗЗ через ДГП и ГЗК."],["Что такое ПМТ","Проект межевания, определяет границы участков. Нужен для присоединения и образования участков."],["С чего начать","Достаточно кадастрового номера, дальше выписка ЕГРН, ГПЗУ и правоустанавливающие документы."]]},
 };
-function richLanding(slug){const d=RICH[slug];if(!d)return null;const s=svcBySlug[slug];const g=groupByKey(d.group);const c=g.c;
+function richLanding(slug){const d=RICH[slug];if(!d)return null;const s=svcBySlug[slug];const g=groupByKey(d.group);const c=g.c;const gr=GROUP_RICH[d.group]||{};
  const rel=svcByGroup(d.group).filter(x=>x.slug!==slug).slice(0,3);
  return `<section class="hero"><div class="wrap"><div class="row">
    <div><p class="crumbs"><a href="#/">Главная</a> / <a href="#/uslugi">Услуги</a> / <a href="#/g/${g.key}">${esc(g.title)}</a> / <span>${esc(s?s.name:d.title)}</span></p>
@@ -696,6 +706,7 @@ function richLanding(slug){const d=RICH[slug];if(!d)return null;const s=svcBySlu
  <section style="padding-top:0"><div class="wrap" style="max-width:860px"><div class="sec-head"><div class="eyebrow" style="color:${c}">Вопросы</div><h2>Частые вопросы</h2></div>
    ${[startFaq(d.group)].concat(d.faq).map(([q,a])=>`<details class="faq"><summary>${esc(q)}</summary><p>${esc(a)}</p></details>`).join('')}
  </div></section>
+ ${caseBlock(d.group)}
  <section style="padding-top:0"><div class="wrap"><div class="grid g2" style="align-items:start;gap:40px">
    <div><div class="eyebrow" style="color:${c}">Заявка</div><h2 style="margin-bottom:14px">Разберём ваш объект</h2><p class="muted">Оставьте заявку, эксперт перезвонит, разберёт ситуацию и предложит план, сроки и стоимость. Ни к чему не обязывает.</p>
      ${rel.length?`<h3 style="margin:26px 0 14px;font-size:18px">Смежные услуги</h3><div class="grid" style="gap:14px">${rel.map(scard).join('')}</div>`:''}</div>
