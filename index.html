@@ -1,0 +1,479 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>KEO GROUP, проектирование, легализация и регистрация коммерческой недвижимости в Москве</title>
+<meta name="description" content="KEO GROUP: полный цикл по коммерческой недвижимости в Москве. Реконструкция, легализация 819-ПП, КРТ, Росреестр, ДГИ, смена ВРИ. 15+ лет, 30+ проектов, 100% решений ГЗК. Гарантия в договоре.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0e1014; --bg2:#14171d; --card:#181c23; --card2:#1d222b; --line:#262c36; --line2:#333b48;
+    --ink:#f2f4f7; --ink2:#aab2c0; --ink3:#78818f;
+    --or:#ff6a1a; --or2:#ff8443; --or-ink:#0e1014;
+    --blue:#3d7bff; --red:#ff4d4d; --green:#27c281; --gold:#e0b252;
+    --r:16px; --r2:12px; --wrap:1200px;
+    --sans:"Montserrat",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+    --shadow:0 1px 0 rgba(255,255,255,.03) inset,0 30px 70px rgba(0,0,0,.45);
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:16px;line-height:1.62;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+  a{color:inherit;text-decoration:none}
+  img{max-width:100%;display:block}
+  .wrap{width:100%;max-width:var(--wrap);margin:0 auto;padding:0 22px}
+  @supports(padding:max(0px)){.wrap{padding-left:max(22px,env(safe-area-inset-left));padding-right:max(22px,env(safe-area-inset-right))}body{padding-bottom:env(safe-area-inset-bottom)}}
+  h1,h2,h3,h4{margin:0;font-weight:800;line-height:1.08;letter-spacing:-.01em}
+  h1{font-size:clamp(32px,5.2vw,58px);font-weight:900}
+  h2{font-size:clamp(26px,3.6vw,40px)}
+  h3{font-size:20px}
+  p{margin:0 0 15px}
+  .eyebrow{font-size:12px;font-weight:800;letter-spacing:.2em;text-transform:uppercase;color:var(--or2);margin:0 0 16px}
+  .lede{font-size:clamp(16px,2vw,19px);color:var(--ink2);max-width:680px}
+  .muted{color:var(--ink2)} .ink3{color:var(--ink3)}
+  .btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;font-family:inherit;font-weight:700;font-size:15px;border-radius:12px;padding:15px 26px;cursor:pointer;border:1px solid transparent;transition:transform .12s,background .15s,border-color .15s;min-height:50px}
+  .btn:active{transform:translateY(1px)}
+  .btn.primary{background:var(--or);color:var(--or-ink);border-color:var(--or)}
+  .btn.primary:hover{background:var(--or2)}
+  .btn.ghost{background:transparent;color:var(--ink);border-color:var(--line2)}
+  .btn.ghost:hover{border-color:var(--or);color:var(--or2)}
+  /* header */
+  header{position:sticky;top:0;z-index:60;background:rgba(14,16,20,.82);backdrop-filter:saturate(140%) blur(14px);border-bottom:1px solid var(--line)}
+  .nav{display:flex;align-items:center;justify-content:space-between;height:74px;gap:18px}
+  .logo{display:flex;align-items:center;gap:11px;font-weight:900;font-size:22px;letter-spacing:.02em}
+  .logo .m{width:38px;height:38px;border-radius:9px;background:var(--or);color:var(--or-ink);display:flex;align-items:center;justify-content:center;font-weight:900;font-size:15px}
+  .logo small{display:block;font-size:10px;font-weight:600;letter-spacing:.14em;color:var(--ink3);text-transform:uppercase}
+  .menu{display:flex;align-items:center;gap:4px}
+  .menu>a,.menu .drop>span{padding:10px 13px;border-radius:9px;font-size:14px;font-weight:600;color:var(--ink2);cursor:pointer;display:inline-block;transition:color .15s,background .15s}
+  .menu>a:hover,.menu .drop:hover>span{color:var(--ink);background:#20252e}
+  .menu>a.on{color:var(--or2)}
+  .nav .tel{font-weight:800;font-size:15px;white-space:nowrap}
+  .drop{position:relative}
+  .drop .pop{position:absolute;top:calc(100% + 8px);left:0;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:10px;min-width:300px;box-shadow:var(--shadow);opacity:0;visibility:hidden;transform:translateY(6px);transition:.16s;z-index:70}
+  .drop:hover .pop{opacity:1;visibility:visible;transform:translateY(0)}
+  .drop .pop a{display:block;padding:9px 12px;border-radius:9px;font-size:13.5px;color:var(--ink2)}
+  .drop .pop a:hover{background:#20252e;color:var(--ink)}
+  .drop .pop .gh{font-size:11px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--ink3);padding:9px 12px 4px}
+  .burger{display:none;width:48px;height:48px;border:1px solid var(--line2);border-radius:11px;background:transparent;color:var(--ink);cursor:pointer;font-size:20px}
+  /* sections */
+  section{padding:84px 0}
+  .sec-head{max-width:720px;margin:0 0 44px}
+  .grid{display:grid;gap:18px}
+  .g2{grid-template-columns:repeat(2,1fr)} .g3{grid-template-columns:repeat(3,1fr)} .g4{grid-template-columns:repeat(4,1fr)}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:26px;transition:border-color .18s,transform .18s}
+  .card:hover{border-color:var(--line2);transform:translateY(-3px)}
+  .crumbs{font-size:13px;color:var(--ink3);margin-bottom:20px}
+  .crumbs a:hover{color:var(--or2)}
+  /* hero */
+  .hero{position:relative;min-height:640px;display:flex;align-items:center;overflow:hidden}
+  .hero .bg{position:absolute;inset:0}
+  .hero .bg img{width:100%;height:100%;object-fit:cover}
+  .hero .bg::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(14,16,20,.96),rgba(14,16,20,.78) 48%,rgba(14,16,20,.42))}
+  .hero .inner{position:relative;padding:90px 0}
+  .hero h1{margin-bottom:20px;max-width:780px}
+  .hero .cta{display:flex;gap:13px;flex-wrap:wrap;margin-top:30px}
+  /* trust bar */
+  .trust{background:#000;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+  .trust .wrap{display:grid;grid-template-columns:repeat(4,1fr);gap:1px}
+  .trust .t{padding:26px 18px;text-align:center}
+  .trust b{display:block;font-size:clamp(26px,3.4vw,38px);font-weight:900;color:var(--or2);line-height:1}
+  .trust span{font-size:13px;color:var(--ink2)}
+  /* group cards (color coded) */
+  .gcard{display:block;background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:28px;border-top:3px solid var(--c);transition:transform .18s,border-color .18s}
+  .gcard:hover{transform:translateY(-4px);border-color:var(--line2)}
+  .gcard .tag{display:inline-block;font-size:11px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--c);margin-bottom:12px}
+  .gcard h3{margin-bottom:10px}
+  .gcard p{color:var(--ink2);font-size:14.5px;margin-bottom:16px}
+  .gcard .cnt{font-size:13px;font-weight:700;color:var(--ink2)}
+  /* service card */
+  .scard{display:flex;flex-direction:column;background:var(--card);border:1px solid var(--line);border-radius:var(--r2);padding:22px;border-left:3px solid var(--c);transition:transform .15s,border-color .15s}
+  .scard:hover{transform:translateY(-3px);border-color:var(--line2)}
+  .scard h4{font-size:16px;margin-bottom:7px}
+  .scard p{color:var(--ink2);font-size:13.5px;margin:0 0 14px}
+  .scard .more{margin-top:auto;font-size:13px;font-weight:700;color:var(--or2)}
+  .price{color:var(--gold);font-weight:800;font-size:13.5px}
+  /* lists */
+  .ulist{list-style:none;padding:0;margin:0 0 24px}
+  .ulist li{padding:12px 0 12px 28px;border-bottom:1px solid var(--line);position:relative;color:var(--ink2)}
+  .ulist li::before{content:"";position:absolute;left:2px;top:19px;width:9px;height:9px;border-radius:50%;background:var(--or)}
+  /* cases */
+  .case{background:var(--card);border:1px solid var(--line);border-radius:var(--r);overflow:hidden}
+  .case .ph{aspect-ratio:16/10;background:linear-gradient(135deg,#1d222b,#0e1014);position:relative;overflow:hidden}
+  .case .ph img{width:100%;height:100%;object-fit:cover}
+  .case .b{padding:22px}
+  .case .res{color:var(--or2);font-weight:800;font-size:15px;margin:6px 0 0}
+  .case .meta{display:flex;gap:14px;flex-wrap:wrap;margin-top:12px;font-size:12.5px;color:var(--ink3)}
+  /* form */
+  form.lead{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:28px}
+  .fld{margin-bottom:16px}
+  .fld label{display:block;font-size:13px;font-weight:700;margin-bottom:7px}
+  .fld input,.fld select{width:100%;background:var(--bg2);border:1px solid var(--line2);border-radius:11px;padding:14px;color:var(--ink);font-size:16px;font-family:inherit;outline:none;transition:border-color .15s,box-shadow .15s}
+  .fld input:focus,.fld select:focus{border-color:var(--or);box-shadow:0 0 0 3px rgba(255,106,26,.18)}
+  .fld input.bad,.fld select.bad{border-color:var(--red)}
+  .err{color:#ff9a86;font-size:12.5px;margin-top:6px;display:none}.err.show{display:block}
+  .agree{display:flex;gap:10px;align-items:flex-start;font-size:13px;color:var(--ink2);cursor:pointer}
+  .agree input{width:18px;height:18px;margin-top:2px;flex:0 0 auto;accent-color:var(--or)}
+  .agree a{color:var(--or2);text-decoration:underline}
+  .hp{position:absolute;left:-9999px}
+  .formnote{font-size:12px;color:var(--ink3);margin-top:13px}
+  .okmsg{background:#13241a;border:1px solid #2f5e41;color:#bfe6cf;border-radius:12px;padding:16px;font-size:14px;display:none}.okmsg.show{display:block}
+  /* cta band */
+  .band{background:linear-gradient(120deg,#1b1f27,#101218);border:1px solid var(--line);border-radius:var(--r);padding:50px 40px;text-align:center}
+  .band h2{margin-bottom:12px} .band p{color:var(--ink2);max-width:560px;margin:0 auto 24px}
+  /* footer */
+  footer{background:#0a0c0f;border-top:1px solid var(--line);padding:60px 0 36px}
+  .fgrid{display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:30px;margin-bottom:38px}
+  .fcol h4{font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink3);font-weight:800;margin:0 0 14px}
+  .fcol a{display:block;color:var(--ink2);font-size:13.5px;padding:13px 0;line-height:1.5}
+  .fcol a:hover{color:var(--or2)}
+  .fbot{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;padding-top:24px;border-top:1px solid var(--line);color:var(--ink3);font-size:12.5px}
+  /* mobile */
+  @media(max-width:920px){
+    .g4{grid-template-columns:repeat(2,1fr)} .g3{grid-template-columns:repeat(2,1fr)}
+  }
+  @media(max-width:760px){
+    .menu{position:fixed;inset:74px 0 auto 0;flex-direction:column;align-items:stretch;background:var(--bg2);border-bottom:1px solid var(--line);padding:14px;gap:3px;transform:translateY(-140%);transition:transform .25s;max-height:84vh;overflow:auto}
+    .menu.open{transform:translateY(0)}
+    .menu>a,.menu .drop>span{padding:14px;font-size:16px}
+    .drop .pop{position:static;opacity:1;visibility:visible;transform:none;box-shadow:none;border:0;background:transparent;padding:0 0 0 12px;min-width:0;display:none}
+    .drop.open .pop{display:block}
+    .nav .tel{display:none}
+    .burger{display:inline-flex;align-items:center;justify-content:center}
+    section{padding:56px 0}
+    .hero{min-height:520px} .hero .bg::after{background:linear-gradient(180deg,rgba(14,16,20,.7),rgba(14,16,20,.95))}
+    .g2,.g3,.g4,.fgrid{grid-template-columns:1fr}
+    .trust .wrap{grid-template-columns:repeat(2,1fr)}
+    .band{padding:36px 22px}
+  }
+</style>
+</head>
+<body>
+<header><div class="wrap nav">
+  <a class="logo" href="#/"><span class="m">KEO</span><span>GROUP<small>Недвижимость под ключ</small></span></a>
+  <nav class="menu" id="menu"></nav>
+  <div style="display:flex;align-items:center;gap:14px">
+    <a class="tel" href="tel:+74996477566">+7 499 647-75-66</a>
+    <button class="burger" id="burger" aria-label="Меню">☰</button>
+  </div>
+</div></header>
+<main id="app"></main>
+<footer><div class="wrap" id="footer"></div></footer>
+<script>
+/* ===== ДАННЫЕ KEO GROUP ===== */
+const CO={tel:"+7 499 647-75-66",telHref:"+74996477566",email:"info@keogroup.ru",tg:"https://t.me/keogroup_ru",
+  addr:"Москва, 2-й Южнопортовый проезд, 20А стр.4 (м. Кожуховская)",hours:"Будни и выходные, 9:00 до 19:00"};
+const GROUPS=[
+ {key:"stroyka",c:"var(--blue)",title:"Строительство и проектирование",desc:"От участка и проекта до ввода и записи в ЕГРН. Реконструкция без остановки бизнеса, новое строительство, АГР."},
+ {key:"legal",c:"var(--red)",title:"Легализация и земля",desc:"Самострой по 819-ПП, защита в зоне КРТ, смена ВРИ, ПМТ и ПЗЗ, прохождение ГЗК. Сложные случаи на стыке права и градостроительства."},
+ {key:"kadastr",c:"var(--green)",title:"Кадастр и регистрация (Росреестр)",desc:"Снятие приостановок и отказов, регистрация права под ключ, техпланы, ТЗК, изменения в ЕГРН, межевание."},
+ {key:"dgi",c:"#c77dff",title:"ДГИ и город",desc:"Выкуп помещений по 159-ФЗ, споры по претензиям, льготная аренда, оспаривание кадастровой стоимости."},
+ {key:"upravlenie",c:"var(--gold)",title:"Управление активами",desc:"Управление коммерческой недвижимостью, негосэкспертиза, платная консультация и экспресс-досье."},
+];
+function S(slug,g,name,note,body,points,price){return {slug,g,name,note,body,points,price:price||""};}
+const SERVICES=[
+ S("rekonstrukciya-zdaniy","stroyka","Реконструкция зданий без остановки бизнеса","Проект, АГР, разрешение, надзор, ввод и изменения в ЕГРН под ключ","Берём весь цикл реконструкции: от проекта и архитектурно-градостроительного облика до разрешения, надзора, ввода и записи новых площадей в ЕГРН. Бизнес при этом продолжает работать.",["Аудит объекта и стратегия согласования","Проект, АГР, прохождение ГЗК","Разрешение, надзор, ввод и ЕГРН под ключ"]),
+ S("novoe-stroitelstvo","stroyka","Новое коммерческое строительство (техзаказчик)","От участка и ГПЗУ до АГР, ГЗК, разрешения, ввода и ЕГРН","Функции технического заказчика на новом объекте: ведём проект от участка и ГПЗУ через АГР и ГЗК до разрешения, ввода и регистрации.",["ГПЗУ, ППТ, проектная документация","АГР, ГЗК, разрешение на строительство","Надзор, ввод в эксплуатацию, ЕГРН"]),
+ S("agr-arhitekturnye-resheniya","stroyka","АГР и архитектурные решения","Архитектурно-градостроительный облик, фасады, входные группы","Готовим и согласуем архитектурно-градостроительный облик: фасады, входные группы, колористика. Проводим через Москомархитектуру.",["Концепция и колеровка фасадов","Входные группы и вывески","Согласование АГР в установленном порядке"]),
+ S("nekapitalnye-obekty","stroyka","Некапитальные объекты (636-ПП)","Согласование, легализация и защита от сноса павильонов и веранд","Согласуем и легализуем некапитальные объекты по 636-ПП: павильоны, веранды, киоски. Защищаем от сноса и работаем с предписаниями ГИН.",["Размещение и согласование по 636-ПП","Легализация до дедлайна, защита от сноса","Работа с предписаниями ГИН"]),
+ S("avtorskiy-stroitelnyy-nadzor","stroyka","Авторский и строительный надзор","Сопровождение стройки до ввода","Ведём авторский и строительный надзор: следим, чтобы стройка шла по проекту и без рисков для ввода и регистрации.",["Контроль соответствия проекту","Журналы и исполнительная документация","Подготовка к вводу в эксплуатацию"]),
+ S("inzhenernye-seti","stroyka","Согласование инженерных сетей","Мосводоканал, Мосводосток и смежные сети","Согласуем подключение и вынос инженерных сетей: Мосводоканал, Мосводосток и смежные организации.",["Технические условия и подключение","Согласование с ресурсниками","Вынос и перекладка сетей"]),
+
+ S("legalizaciya-819pp","legal","Легализация самостроя (819-ПП)","Исключение из реестра 819-ПП, ГЗК, признание права собственности","Это ядро нашей практики. Исключаем объект из реестра самостроя 819-ПП через ГЗК и признаём право собственности на построенные площади. Срок обычно 5 до 15 месяцев, в договоре гарантия результата или возврат.",["Аудит и стратегия по объекту","Досье и прохождение ГЗК","Исключение из 819-ПП и право собственности"]),
+ S("krt-zashchita","legal","КРТ: защита собственников","Исключение объекта из КРТ или справедливая компенсация через суд","Если объект попал в зону комплексного развития территории, помогаем исключить его из КРТ или добиться справедливой компенсации. За 5,5 месяцев 2026 в Москве и области принято свыше 220 решений об изъятии, начальная компенсация бывает заметно ниже судебной. Действовать нужно на опережение.",["Анализ статуса объекта в КРТ","Исключение из проекта КРТ","Справедливая компенсация через суд"]),
+ S("vri-zemelnogo-uchastka","legal","Смена ВРИ земельного участка","Изменение вида разрешённого использования, без ПЗЗ и через ПЗЗ","Меняем вид разрешённого использования участка под ваш сценарий. Росреестр не зарегистрирует аренду при несовпадении назначения и ВРИ, а за нецелевое использование штраф от 100 000 рублей.",["Анализ ПЗЗ и текущего ВРИ","Смена ВРИ без ПЗЗ или через ПЗЗ","Внесение изменений в ЕГРН"]),
+ S("pmt-pzz","legal","Корректировка и разработка ПМТ, ПЗЗ","Проект межевания территории, правила землепользования и застройки","Разрабатываем и корректируем проект межевания территории и правила землепользования и застройки под планы развития участка.",["Проект межевания территории (ПМТ)","Корректировка ПЗЗ","Сопровождение публичных процедур"]),
+ S("gzk","legal","Прохождение ГЗК","Подготовка досье и сопровождение на рабочей группе и комиссии","Готовим досье и ведём объект на рабочей группе и Градостроительно-земельной комиссии. По нашему портфелю легализации 100% положительных решений ГЗК.",["Сбор и упаковка досье","Рабочая группа и комиссия","Получение протокола ГЗК"]),
+ S("redevelopment-promploschadok","legal","Редевелопмент промышленных площадок","Перевод промплощадки в новый функционал, ППТ, ПЗЗ, ВРИ","Переводим промышленную площадку в новый функционал: проект планировки, ПЗЗ, смена ВРИ, подготовка к строительству.",["Концепция и градостроительный потенциал","ППТ, ПЗЗ, смена ВРИ","Подготовка к новому строительству"]),
+ S("pasport-bezopasnosti-zos","legal","Паспорт безопасности и ЗОС","Документация для легализации и ГЗК","Готовим паспорт безопасности и заключение о соответствии (ЗОС) как часть пакета для легализации и прохождения ГЗК.",["Паспорт безопасности объекта","Заключение о соответствии","Комплектация пакета для ГЗК"]),
+
+ S("rosreestr-priostanovki","kadastr","ЕГРН и Росреестр: снятие приостановок и отказов","Анализ причин, исправление, повторная подача, обжалование","Снимаем приостановки и отказы в Росреестре. Без профессиональной подготовки документов приостановка случается примерно в 7 из 10 случаев. С 2026 действует досудебное обжалование через апелляционную комиссию (30 дней).",["Разбор причин приостановки","Исправление и повторная подача","Обжалование через апелляционную комиссию"]),
+ S("registraciya-prava","kadastr","Регистрация права собственности под ключ","Здания, помещения, переход права, по решению суда","Регистрируем право собственности на здания и помещения, оформляем переход права и регистрацию по решению суда.",["Подготовка пакета документов","Подача и сопровождение в Росреестре","Регистрация по решению суда"]),
+ S("izmeneniya-egrn","kadastr","Внесение изменений в ЕГРН","После перепланировки, реконструкции, смены назначения","Вносим изменения в ЕГРН после перепланировки, реконструкции, смены назначения и исправляем ошибки реестра.",["Актуализация площадей и характеристик","Смена назначения помещения","Исправление реестровых ошибок"]),
+ S("kadastrovyy-uchet","kadastr","Кадастровый учёт","Постановка, учёт изменений, снятие с учёта","Ставим объекты на кадастровый учёт, учитываем изменения и снимаем с учёта снесённые объекты.",["Постановка на учёт","Учёт изменений","Снятие с учёта"]),
+ S("tehnicheskiy-plan","kadastr","Технические планы","Здание, помещение, сооружение","Готовим технические планы на здания, помещения и сооружения. От 15 000 рублей, срок 3 до 5 дней.",["Обмеры и подготовка плана","Здание, помещение, сооружение","Готовый XML для Росреестра"],"от 15 000 руб, 3-5 дней"),
+ S("tehnicheskoe-zaklyuchenie","kadastr","Техническое заключение (ТЗК)","Состояние конструкций и возможность работ","Делаем техническое заключение о состоянии конструкций и возможности перепланировки или реконструкции. От 20 000 рублей, 5 до 7 рабочих дней.",["Обследование конструкций","Выводы и рекомендации","Документ для согласований"],"от 20 000 руб, 5-7 дней"),
+ S("proekt-pereplanirovki","kadastr","Проект перепланировки","Согласование в МЖИ","Готовим проект перепланировки и согласуем в Мосжилинспекции. От 25 000 рублей.",["Проектная документация","Согласование в МЖИ","Ввод изменений в ЕГРН"],"от 25 000 руб"),
+ S("akt-obsledovaniya","kadastr","Акт обследования","Подтверждение прекращения существования объекта","Готовим акт обследования, который подтверждает прекращение существования объекта для снятия с учёта.",["Выезд кадастрового инженера","Подготовка акта","Снятие объекта с учёта"]),
+ S("registraciya-dogovorov","kadastr","Регистрация договоров","Аренда, ипотека, допсоглашения","Регистрируем договоры аренды, залога, расторжения и дополнительные соглашения.",["Аренда и субаренда","Залог и ипотека","Расторжение и допсоглашения"]),
+ S("razdel-obedinenie","kadastr","Раздел, объединение, выдел доли","Изменение состава объектов недвижимости","Меняем состав объектов: раздел, объединение, выдел доли с постановкой на учёт и регистрацией.",["Раздел и объединение","Выдел доли","Учёт и регистрация результата"]),
+ S("mezhevanie-granicy","kadastr","Межевание и уточнение границ","Координирование, вынос точек в натуру, перераспределение","Проводим межевание, уточняем границы, выносим точки в натуру и перераспределяем участки.",["Координирование границ","Вынос точек в натуру","Перераспределение участков"]),
+
+ S("dgi-vykup-159fz","dgi","ДГИ: выкуп помещений по 159-ФЗ","Преимущественное право выкупа для МСП, оспаривание оценки","Помогаем малому и среднему бизнесу выкупить арендуемое городское помещение по 159-ФЗ и оспорить завышенную оценку.",["Проверка права на выкуп","Заявление и сопровождение в ДГИ","Оспаривание цены выкупа"]),
+ S("dgi-spory","dgi","ДГИ: споры по претензиям","Доначисления аренды, неустойки, расторжение","Защищаем по претензиям ДГИ: доначисления аренды, неустойки, требования о расторжении договора.",["Анализ претензии","Досудебная защита","Спор в суде"]),
+ S("dgi-lgotnaya-arenda","dgi","ДГИ: льготная аренда городских помещений","Оформление, продление, сохранение льготы","Оформляем, продлеваем и сохраняем льготную аренду городских помещений.",["Оформление льготной ставки","Продление договора","Сохранение льготы при проверках"]),
+ S("osparivanie-kadastrovoy-stoimosti","dgi","Оспаривание кадастровой стоимости","Снижение завышенной кадастровой стоимости","Снижаем завышенную кадастровую стоимость, чтобы уменьшить налог и арендные платежи.",["Анализ кадастровой стоимости","Отчёт об оценке","Комиссия или суд"]),
+
+ S("upravlenie-nedvizhimostyu","upravlenie","Управление коммерческой недвижимостью","Техобслуживание, арендные процессы, доходность","Управляем коммерческой недвижимостью: техническое обслуживание, арендные процессы, рост доходности. Отдельное направление, сайт fm.keogroup.ru.",["Техобслуживание здания","Работа с арендаторами","Рост доходности объекта"]),
+ S("negosudarstvennaya-ekspertiza","upravlenie","Негосэкспертиза проектной документации","Экспертиза проекта и результатов изысканий","Проводим негосударственную экспертизу проектной документации и результатов инженерных изысканий.",["Экспертиза проекта","Экспертиза изысканий","Положительное заключение"]),
+ S("konsultaciya-ekspress-dose","upravlenie","Платная консультация и экспресс-досье","План действий за несколько дней","Готовим платное экспресс-досье и понятный план действий по вашему объекту за несколько дней: ГЗК, АГР, 819-ПП, КРТ.",["Разбор объекта и рисков","План действий по шагам","Смета и сроки"]),
+];
+const SEGMENTS=[
+ "Владельцам коммерческих зданий: реконструкция без остановки бизнеса",
+ "Собственникам объектов в 819-ПП под риском сноса",
+ "Девелоперам и инвесторам: новое строительство под ключ",
+ "Владельцам помещений с приостановками в Росреестре",
+ "Ритейлу и сетям: некапитальные объекты по 636-ПП",
+ "Собственникам в зоне КРТ",
+ "Арендаторам и покупателям городских помещений у ДГИ",
+ "Собственникам и арендаторам земли: ВРИ, ПЗЗ, ПМТ",
+];
+const CASES=[
+ {t:"Реконструкция, 2-я ул. Марьиной Рощи 2А",d:"СВАО",res:"+471,2 кв.м, исключён из 819-ПП",term:"6 мес",extra:"Протокол ГЗК, признано право собственности"},
+ {t:"Комплексная реконструкция, Волоколамское ш. 5 стр.1",d:"САО",res:"+900 кв.м, право собственности",term:"15 мес",extra:"Согласование с Мосводоканалом и Мосводостоком"},
+ {t:"ТЦ, 3-й Павелецкий проезд вл.4",d:"ЮАО",res:"+1 646,1 кв.м",term:"9 мес",extra:"Протокол ГЗК №16 п.86, исключён из 819-ПП"},
+ {t:"Антресоль и мансарда, Фридриха Энгельса 75 стр.3",d:"ЦАО",res:"+736 кв.м",term:"6 мес",extra:"Протокол ГЗК, право собственности"},
+ {t:"Надстройка и пристройка, Самаркандский бул. 4",d:"ЮВАО",res:"+750,1 кв.м",term:"7 мес",extra:"Протокол ГЗК, право собственности"},
+ {t:"Портфель легализации",d:"Москва",res:"30+ проектов, 30 000+ кв.м",term:"",extra:"100% положительных решений ГЗК"},
+];
+const svcBySlug=Object.fromEntries(SERVICES.map(s=>[s.slug,s]));
+const svcByGroup=g=>SERVICES.filter(s=>s.g===g);
+const groupByKey=k=>GROUPS.find(g=>g.key===k);
+/* ===== НАСТРОЙКИ ФОРМЫ (ставит site-forms из config панели) ===== */
+const FORM_ENDPOINT="";  // пусто = демо-режим
+function esc(s){return (s==null?'':String(s)).replace(/[&<>]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]));}
+
+/* ===== ШАПКА И ПОДВАЛ (data-driven) ===== */
+function renderChrome(){
+  const groupsMenu=GROUPS.map(g=>`<div class="gh">${esc(g.title)}</div>`+svcByGroup(g.key).map(s=>`<a href="#/u/${s.slug}">${esc(s.name)}</a>`).join('')).join('');
+  document.getElementById('menu').innerHTML=`
+    <a href="#/" data-r="/">Главная</a>
+    <div class="drop"><span data-r="/uslugi">Услуги ▾</span><div class="pop" style="min-width:340px;max-height:70vh;overflow:auto">${groupsMenu}</div></div>
+    <a href="#/segmenty" data-r="/segmenty">Сегменты</a>
+    <a href="#/keysy" data-r="/keysy">Кейсы</a>
+    <a href="#/o-kompanii" data-r="/o-kompanii">О компании</a>
+    <a href="#/ceny" data-r="/ceny">Цены</a>
+    <a href="#/faq" data-r="/faq">Вопросы</a>
+    <a href="#/kontakty" data-r="/kontakty">Контакты</a>
+    <a class="btn primary" href="#/kontakty" style="min-height:42px;padding:10px 18px">Получить разбор</a>`;
+  document.getElementById('menu').querySelectorAll('.drop>span').forEach(sp=>sp.onclick=e=>{if(window.innerWidth<=760){e.currentTarget.parentElement.classList.toggle('open');}});
+  document.getElementById('footer').innerHTML=`
+    <div class="fgrid">
+      <div class="fcol">
+        <a class="logo" href="#/" style="margin-bottom:14px"><span class="m">KEO</span><span>GROUP</span></a>
+        <p class="muted" style="font-size:13.5px">Полный цикл по коммерческой недвижимости в Москве: проектирование, легализация, регистрация, управление. Инженеры и юристы в одной команде, результат с гарантией в договоре.</p>
+        <p class="muted" style="font-size:13.5px">${esc(CO.addr)}<br>${esc(CO.hours)}</p>
+      </div>
+      <div class="fcol"><h4>Направления</h4>${GROUPS.map(g=>`<a href="#/g/${g.key}">${esc(g.title)}</a>`).join('')}</div>
+      <div class="fcol"><h4>Компания</h4><a href="#/keysy">Кейсы</a><a href="#/o-kompanii">О компании</a><a href="#/segmenty">Сегменты</a><a href="#/ceny">Цены</a><a href="#/faq">Вопросы</a><a href="#/blog">Блог</a></div>
+      <div class="fcol"><h4>Контакты</h4><a href="tel:${CO.telHref}">${esc(CO.tel)}</a><a href="mailto:${CO.email}">${esc(CO.email)}</a><a href="${CO.tg}" target="_blank">Telegram</a><a href="#/politika">Политика конфиденциальности</a></div>
+    </div>
+    <div class="fbot"><span>KEO GROUP, 2026. Сайт для демонстрации, собран Конструктором @thebodymindcode.</span><span>Москва, м. Кожуховская</span></div>`;
+}
+
+/* ===== ОБЩИЕ БЛОКИ ===== */
+function band(title,text){return `<section style="padding-top:0"><div class="wrap"><div class="band"><h2>${title}</h2><p>${text}</p><a class="btn primary" href="#/kontakty">Получить разбор объекта</a></div></div></section>`;}
+function trustBar(){return `<div class="trust"><div class="wrap">
+  <div class="t"><b>15+</b><span>лет на рынке Москвы</span></div>
+  <div class="t"><b>30+</b><span>проектов легализации</span></div>
+  <div class="t"><b>30 000+</b><span>кв.м узаконено</span></div>
+  <div class="t"><b>100%</b><span>положительных решений ГЗК</span></div>
+</div></div>`;}
+function leadForm(prefill){
+  const opts=SERVICES.map(s=>`<option${prefill===s.slug?' selected':''}>${esc(s.name)}</option>`).join('');
+  return `<form class="lead" id="leadform" novalidate>
+    <h3 style="margin-bottom:6px">Получить разбор объекта</h3>
+    <p class="muted" style="font-size:13.5px;margin-bottom:18px">Оставьте заявку, эксперт перезвонит, разберёт ситуацию и предложит план. Ни к чему не обязывает.</p>
+    <div class="fld"><label for="f-name">Как к вам обращаться</label><input id="f-name" name="name" placeholder="Имя" autocomplete="name"><div class="err" id="e-name">Впишите имя</div></div>
+    <div class="fld"><label for="f-phone">Телефон</label><input id="f-phone" name="phone" placeholder="+7 999 123 45 67" inputmode="tel" autocomplete="tel"><div class="err" id="e-phone">Проверьте телефон, кажется коротковат</div></div>
+    <div class="fld"><label for="f-svc">Услуга</label><select id="f-svc" name="service"><option value="">Выберите направление</option>${opts}</select></div>
+    <input type="hidden" name="_subject" value="Заявка с сайта KEO GROUP">
+    <div class="hp"><label>Не заполняйте<input name="_gotcha" tabindex="-1" autocomplete="off"></label></div>
+    <label class="agree" style="margin:4px 0 18px"><input type="checkbox" id="f-agree"><span>Согласен на обработку данных по <a href="#/politika">политике конфиденциальности</a></span></label>
+    <button type="submit" class="btn primary" id="f-submit" style="width:100%">Отправить заявку</button>
+    <div class="formnote" id="f-note"></div>
+    <div class="okmsg" id="f-ok">Спасибо, заявка принята. Эксперт KEO GROUP свяжется с вами в ближайшее время.</div>
+  </form>`;
+}
+function scard(s){const g=groupByKey(s.g);return `<a class="scard" href="#/u/${s.slug}" style="--c:${g.c}"><h4>${esc(s.name)}</h4><p>${esc(s.note)}</p>${s.price?`<div class="price">${esc(s.price)}</div>`:''}<span class="more">Подробнее →</span></a>`;}
+/* ===== СТРАНИЦЫ ===== */
+const PAGES={};
+PAGES["/"]=()=>`
+  <section class="hero"><div class="bg"><img src="./images/hero.png" alt="Деловая Москва"></div>
+    <div class="wrap inner">
+      <div class="eyebrow">Коммерческая недвижимость в Москве</div>
+      <h1>Проведём объект от проблемы до права собственности</h1>
+      <p class="lede">KEO GROUP берёт полный цикл: аудит, проект, согласование, легализация, регистрация. Инженеры, кадастровые специалисты и юристы в одной команде. Результат закрепляем гарантией в договоре.</p>
+      <div class="cta"><a class="btn primary" href="#/kontakty">Получить разбор объекта</a><a class="btn ghost" href="#/uslugi">Все услуги</a></div>
+    </div></section>
+  ${trustBar()}
+  <section><div class="wrap">
+    <div class="sec-head"><div class="eyebrow">Навигатор по задачам</div><h2>С какой задачей пришли</h2><p class="lede" style="margin-top:12px">Пять направлений закрывают весь путь объекта. Выберите своё, внутри отдельная страница на каждую услугу.</p></div>
+    <div class="grid g3">${GROUPS.map(g=>`<a class="gcard" href="#/g/${g.key}" style="--c:${g.c}"><span class="tag">${esc(g.title)}</span><p>${esc(g.desc)}</p><span class="cnt">${svcByGroup(g.key).length} услуг →</span></a>`).join('')}</div>
+  </div></section>
+  <section style="padding-top:0"><div class="wrap">
+    <div class="sec-head"><div class="eyebrow">Почему к нам</div><h2>Единое окно вместо десяти подрядчиков</h2></div>
+    <div class="grid g4">
+      <div class="card"><h3 style="color:var(--or2)">Все компетенции в штате</h3><p class="muted" style="font-size:14px">Юрист, кадастровый инженер и градостроитель работают вместе, никто не перекидывает ответственность.</p></div>
+      <div class="card"><h3 style="color:var(--or2)">Гарантия в договоре</h3><p class="muted" style="font-size:14px">Фиксируем результат, по ряду направлений работает условие результат или возврат.</p></div>
+      <div class="card"><h3 style="color:var(--or2)">Сложные случаи</h3><p class="muted" style="font-size:14px">Берём приостановки, отказы, самострой, КРТ и споры, где другие разводят руками.</p></div>
+      <div class="card"><h3 style="color:var(--or2)">Прозрачные сроки</h3><p class="muted" style="font-size:14px">Считаем сроки и стоимость по этапам, закрывающие документы для бухгалтерии.</p></div>
+    </div>
+  </div></section>
+  <section style="padding-top:0"><div class="wrap">
+    <div class="sec-head"><div class="eyebrow">Результаты</div><h2>Реальные объекты и цифры</h2></div>
+    <div class="grid g3">${CASES.slice(0,3).map(caseCard).join('')}</div>
+    <div style="margin-top:24px"><a class="btn ghost" href="#/keysy">Смотреть все кейсы</a></div>
+  </div></section>
+  ${band("Разберём ваш объект","Оставьте заявку, эксперт перезвонит и предложит понятный план действий по вашей ситуации.")}`;
+
+function caseCard(c){return `<div class="case"><div class="ph"><img src="./images/case.png" alt="Объект в Москве"></div><div class="b"><h4>${esc(c.t)}</h4><div class="res">${esc(c.res)}</div><div class="meta"><span>${esc(c.d)}</span>${c.term?`<span>Срок: ${esc(c.term)}</span>`:''}</div><p class="muted" style="font-size:13px;margin:10px 0 0">${esc(c.extra)}</p></div></div>`;}
+
+PAGES["/uslugi"]=()=>`<section><div class="wrap">
+  <p class="crumbs"><a href="#/">Главная</a> / <span>Услуги</span></p>
+  <div class="sec-head"><div class="eyebrow">Услуги</div><h2>Все направления KEO GROUP</h2><p class="lede" style="margin-top:12px">31 услуга в пяти направлениях. На каждую отдельная страница с тем, что входит, сроками и ценой.</p></div>
+  ${GROUPS.map(g=>`<div style="margin-bottom:40px"><h3 style="color:${g.c};margin-bottom:16px">${esc(g.title)}</h3><div class="grid g3">${svcByGroup(g.key).map(scard).join('')}</div></div>`).join('')}
+</div></section>${band("Не нашли свою ситуацию","Опишите задачу, мы подскажем направление и план. Часто решение есть даже там, где отказали другие.")}`;
+
+PAGES["/segmenty"]=()=>`<section><div class="wrap">
+  <p class="crumbs"><a href="#/">Главная</a> / <span>Сегменты</span></p>
+  <div class="sec-head"><div class="eyebrow">Кому помогаем</div><h2>Решения под вашу роль</h2></div>
+  <div class="grid g2">${SEGMENTS.map(s=>`<div class="card"><h3 style="font-size:17px;margin-bottom:8px">${esc(s.split(":")[0])}</h3><p class="muted" style="font-size:14px;margin:0">${esc(s.split(":")[1]||"")}</p></div>`).join('')}</div>
+</div></section>${band("Вы в одном из сегментов","Расскажите про объект, подберём услуги именно под вашу задачу.")}`;
+
+PAGES["/keysy"]=()=>`<section><div class="wrap">
+  <p class="crumbs"><a href="#/">Главная</a> / <span>Кейсы</span></p>
+  <div class="sec-head"><div class="eyebrow">Портфолио</div><h2>Объекты, которые узаконили</h2><p class="lede" style="margin-top:12px">Цифры из договоров и протоколов ГЗК. Площади, сроки, округа Москвы.</p></div>
+  <div class="grid g3">${CASES.map(caseCard).join('')}</div>
+</div></section>${band("Хотите такой же результат","Покажем, как пройти ваш объект, и зафиксируем план в договоре.")}`;
+
+PAGES["/o-kompanii"]=()=>`<section><div class="wrap">
+  <p class="crumbs"><a href="#/">Главная</a> / <span>О компании</span></p>
+  <div class="sec-head"><div class="eyebrow">О компании</div><h2>KEO GROUP</h2><p class="lede" style="margin-top:12px">Московская компания юридического и градостроительного сопровождения недвижимости, земли и кадастра. Работаем с 2010 года, более 15 лет на рынке.</p></div>
+  <div class="grid g2" style="margin-bottom:36px">
+    <div class="card"><h3 style="color:var(--or2);margin-bottom:8px">Единое окно</h3><p class="muted">Инженеры и юристы в одной команде. Берём на себя весь цикл общения с госорганами: Росреестр, ДГИ, ГЗК, ГИН, Москомархитектура. От подготовки документов до результата.</p></div>
+    <div class="card"><h3 style="color:var(--or2);margin-bottom:8px">Результат до получения документа</h3><p class="muted">Не берёмся за невозможное и не обещаем пустого. Если беремся, доводим до записи в ЕГРН или протокола ГЗК. По ряду направлений работает гарантия возврата.</p></div>
+  </div>
+  ${trustBar()}
+</div></section>${band("Познакомимся на разборе объекта","Первый шаг это разбор вашей ситуации. Дальше понятный план и смета.")}`;
+
+PAGES["/ceny"]=()=>`<section><div class="wrap">
+  <p class="crumbs"><a href="#/">Главная</a> / <span>Цены</span></p>
+  <div class="sec-head"><div class="eyebrow">Цены</div><h2>Ориентиры по стоимости</h2><p class="lede" style="margin-top:12px">Точную смету считаем после разбора объекта, оплата по этапам. Ниже ориентиры по типовым услугам.</p></div>
+  <div class="grid g2">${SERVICES.filter(s=>s.price).map(s=>`<div class="card" style="display:flex;justify-content:space-between;gap:14px;align-items:center"><div><h4 style="font-size:15px;margin-bottom:4px">${esc(s.name)}</h4><p class="muted" style="font-size:13px;margin:0">${esc(s.note)}</p></div><div class="price" style="white-space:nowrap">${esc(s.price)}</div></div>`).join('')}</div>
+  <p class="muted" style="margin-top:22px;font-size:14px">По остальным направлениям (легализация, КРТ, ДГИ, реконструкция) стоимость индивидуальная, зависит от объекта. <a href="#/kontakty" style="color:var(--or2)">Запросите расчёт</a>.</p>
+</div></section>`;
+
+PAGES["/blog"]=()=>`<section><div class="wrap">
+  <p class="crumbs"><a href="#/">Главная</a> / <span>Блог</span></p>
+  <div class="sec-head"><div class="eyebrow">Экспертные статьи</div><h2>Блог KEO GROUP</h2></div>
+  <div class="grid g3">
+    ${[["Приостановка в Росреестре: что делать","Почему приостановка случается в 7 из 10 случаев и как снять её через апелляционную комиссию."],["Самострой и 819-ПП","Как исключить объект из реестра самостроя через ГЗК и признать право собственности."],["Попали в зону КРТ","Сроки изъятия, компенсация и как добиться справедливой суммы через суд."]].map(([t,d])=>`<div class="card"><h4 style="margin-bottom:8px">${esc(t)}</h4><p class="muted" style="font-size:13.5px;margin:0">${esc(d)}</p><div style="margin-top:14px"><a href="#/kontakty" style="color:var(--or2);font-size:13px;font-weight:700">Спросить эксперта →</a></div></div>`).join('')}
+  </div>
+  <p class="muted" style="margin-top:22px;font-size:14px">Раздел наполняется. Нужна статья по вашей теме, <a href="#/kontakty" style="color:var(--or2)">напишите нам</a>.</p>
+</div></section>`;
+
+PAGES["/faq"]=()=>{const qa=[["Сколько стоит и как считаете","Точную смету даём после разбора объекта. Оплата по этапам, на руки закрывающие документы."],["Даёте ли гарантию","Да, фиксируем результат в договоре. По ряду направлений работает условие результат или возврат средств."],["Беретесь ли за сложные случаи","Да, это наш профиль: приостановки и отказы, самострой по 819-ПП, КРТ, споры с ДГИ."],["Сколько занимает легализация по 819-ПП","Обычно от 5 до 15 месяцев, зависит от объекта. На разборе назовём срок по вашей ситуации."],["Работаете только по Москве","Москва и Московская область. Госорганы и практику этого региона знаем досконально."]];
+  return `<section><div class="wrap" style="max-width:820px">
+  <p class="crumbs"><a href="#/">Главная</a> / <span>Вопросы</span></p>
+  <div class="sec-head"><div class="eyebrow">Частые вопросы</div><h2>Коротко о важном</h2></div>
+  ${qa.map(([q,a])=>`<div class="card" style="margin-bottom:14px"><h4 style="margin-bottom:8px">${esc(q)}</h4><p class="muted" style="margin:0">${esc(a)}</p></div>`).join('')}
+</div></section>${band("Остался вопрос","Задайте его эксперту, ответим по вашей ситуации без общих слов.")}`;};
+
+PAGES["/kontakty"]=()=>`<section><div class="wrap">
+  <p class="crumbs"><a href="#/">Главная</a> / <span>Контакты</span></p>
+  <div class="sec-head"><div class="eyebrow">Контакты</div><h2>Связаться с KEO GROUP</h2></div>
+  <div class="grid g2" style="align-items:start">
+    ${leadForm("")}
+    <div>
+      <div class="card" style="margin-bottom:16px"><h3 style="margin-bottom:14px">Прямые контакты</h3>
+        <p style="margin:0 0 10px"><a href="tel:${CO.telHref}" style="font-weight:800;font-size:18px">${esc(CO.tel)}</a></p>
+        <p class="muted" style="margin:0 0 8px"><a href="mailto:${CO.email}" style="color:var(--or2)">${esc(CO.email)}</a></p>
+        <p class="muted" style="margin:0 0 8px"><a href="${CO.tg}" target="_blank" style="color:var(--or2)">Telegram</a></p>
+        <p class="muted" style="margin:0">${esc(CO.addr)}<br>${esc(CO.hours)}</p>
+      </div>
+    </div>
+  </div>
+</div></section>`;
+
+PAGES["/politika"]=()=>`<section><div class="wrap" style="max-width:820px">
+  <p class="crumbs"><a href="#/">Главная</a> / <span>Политика конфиденциальности</span></p>
+  <h2 style="margin-bottom:20px">Политика конфиденциальности</h2>
+  <p class="muted">Это демонстрационная страница. В рабочей версии здесь размещается полный текст согласия на обработку персональных данных: какие данные собираем (имя и телефон из формы), цель (связаться по заявке), что не передаём третьим лицам и как запросить удаление данных.</p>
+  <p class="muted">Заявки с форм уходят на почту компании через сервис приёма форм. База на сайте не хранится.</p>
+</div></section>`;
+
+PAGES["/spasibo"]=()=>`<section><div class="wrap" style="max-width:640px;text-align:center;padding:40px 0">
+  <div class="eyebrow">Готово</div><h2 style="margin-bottom:14px">Заявка принята</h2>
+  <p class="lede" style="margin:0 auto 26px">Эксперт KEO GROUP свяжется с вами в ближайшее время, разберёт объект и предложит план.</p>
+  <a class="btn primary" href="#/">На главную</a>
+</div></section>`;
+
+function servicePage(slug){
+  const s=svcBySlug[slug]; if(!s) return null; const g=groupByKey(s.g);
+  const rel=svcByGroup(s.g).filter(x=>x.slug!==slug).slice(0,3);
+  return `<section><div class="wrap" style="max-width:980px">
+    <p class="crumbs"><a href="#/">Главная</a> / <a href="#/uslugi">Услуги</a> / <a href="#/g/${g.key}">${esc(g.title)}</a> / <span>${esc(s.name)}</span></p>
+    <div class="grid g2" style="align-items:start;gap:40px">
+      <div>
+        <span class="tag" style="display:inline-block;font-size:11px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:${g.c};margin-bottom:12px">${esc(g.title)}</span>
+        <h1 style="font-size:clamp(28px,4vw,42px);margin-bottom:16px">${esc(s.name)}</h1>
+        <p class="lede">${esc(s.note)}</p>
+        ${s.price?`<div class="price" style="font-size:18px;margin:18px 0">${esc(s.price)}</div>`:''}
+        <p class="muted" style="font-size:16px;margin:20px 0">${esc(s.body)}</p>
+        <h3 style="margin:26px 0 6px">Что входит</h3>
+        <ul class="ulist">${s.points.map(p=>`<li>${esc(p)}</li>`).join('')}</ul>
+      </div>
+      <div style="position:sticky;top:96px">${leadForm(slug)}</div>
+    </div>
+    ${rel.length?`<div style="margin-top:46px"><h3 style="margin-bottom:16px">Смежные услуги</h3><div class="grid g3">${rel.map(scard).join('')}</div></div>`:''}
+  </div></section>${band("Разберём вашу ситуацию по этой услуге","Оставьте заявку, эксперт перезвонит, оценит объект и назовёт срок и стоимость.")}`;
+}
+function groupPage(key){
+  const g=groupByKey(key); if(!g) return null;
+  return `<section><div class="wrap">
+    <p class="crumbs"><a href="#/">Главная</a> / <a href="#/uslugi">Услуги</a> / <span>${esc(g.title)}</span></p>
+    <div class="sec-head"><span class="eyebrow" style="color:${g.c}">Направление</span><h2>${esc(g.title)}</h2><p class="lede" style="margin-top:12px">${esc(g.desc)}</p></div>
+    <div class="grid g3">${svcByGroup(key).map(scard).join('')}</div>
+  </div></section>${band("Нужна помощь по этому направлению","Опишите объект, подберём услугу и план под вашу задачу.")}`;
+}
+/* ===== ФОРМА ===== */
+function wireForm(){
+  const f=document.getElementById('leadform'); if(!f) return;
+  const name=document.getElementById('f-name'),phone=document.getElementById('f-phone'),agree=document.getElementById('f-agree'),
+        submit=document.getElementById('f-submit'),note=document.getElementById('f-note'),ok=document.getElementById('f-ok');
+  const eN=document.getElementById('e-name'),eP=document.getElementById('e-phone');
+  note.textContent=FORM_ENDPOINT?'':'Демо-режим: проверка полей работает, заявка пока не уходит. Впишите адрес Formspree в Настройках панели.';
+  const okPhone=()=>phone.value.replace(/\D/g,'').length>=10, okName=()=>name.value.trim().length>=2;
+  function mark(el,e,good){el.classList.toggle('bad',!good);e.classList.toggle('show',!good);}
+  function refresh(){submit.disabled=!(okName()&&okPhone()&&agree.checked);submit.style.opacity=submit.disabled?.55:1;}
+  [name,phone].forEach(el=>el.addEventListener('input',refresh));
+  name.addEventListener('blur',()=>mark(name,eN,okName()));
+  phone.addEventListener('blur',()=>mark(phone,eP,okPhone()));
+  agree.addEventListener('change',refresh); refresh();
+  f.addEventListener('submit',async e=>{
+    e.preventDefault();
+    mark(name,eN,okName());mark(phone,eP,okPhone());
+    if(!(okName()&&okPhone()&&agree.checked)){refresh();return;}
+    if(f._gotcha&&f._gotcha.value)return;
+    submit.disabled=true;submit.textContent='Отправляем…';
+    if(!FORM_ENDPOINT){setTimeout(()=>{ok.classList.add('show');f.reset();submit.textContent='Отправить заявку';note.textContent='Это демо. В рабочей версии заявка ушла бы на почту компании.';},700);return;}
+    try{const r=await fetch(FORM_ENDPOINT,{method:'POST',headers:{Accept:'application/json'},body:new FormData(f)});
+      if(r.ok){location.hash='#/spasibo';}else{note.textContent='Что-то пошло не так. Позвоните нам или напишите в Telegram.';submit.disabled=false;submit.textContent='Отправить заявку';}
+    }catch(_){note.textContent='Нет связи. Проверьте интернет или позвоните нам.';submit.disabled=false;submit.textContent='Отправить заявку';}
+  });
+}
+
+/* ===== РОУТЕР ===== */
+function render(){
+  let h=location.hash.replace(/^#/,'')||'/';
+  let html=null;
+  let m;
+  if(m=h.match(/^\/u\/([a-z0-9-]+)$/)) html=servicePage(m[1]);
+  else if(m=h.match(/^\/g\/([a-z]+)$/)) html=groupPage(m[1]);
+  else if(PAGES[h]) html=PAGES[h]();
+  if(!html) html=`<section><div class="wrap" style="text-align:center;padding:80px 0"><div class="eyebrow">Страница не найдена</div><h2 style="margin-bottom:14px">Тут пусто</h2><p class="lede" style="margin:0 auto 24px">Такой страницы нет. Вернитесь на главную, оттуда открыто всё.</p><a class="btn primary" href="#/">На главную</a></div></section>`;
+  document.getElementById('app').innerHTML=html;
+  const root='/'+(h.split('/')[1]||'');
+  document.querySelectorAll('.menu a[data-r],.menu .drop>span[data-r]').forEach(a=>a.classList.toggle('on',a.dataset.r===root));
+  document.getElementById('menu').classList.remove('open');
+  window.scrollTo(0,0);
+  wireForm();
+}
+document.getElementById('burger').onclick=()=>document.getElementById('menu').classList.toggle('open');
+window.addEventListener('hashchange',render);
+renderChrome();
+render();
+</script>
+</body>
+</html>
