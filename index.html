@@ -143,8 +143,21 @@
   details.faq summary::after{content:"+";color:var(--blue2);font-size:22px;font-weight:700;flex:0 0 auto;transition:transform .2s}
   details.faq[open] summary::after{content:"\2212"}
   details.faq p{color:var(--ink2);margin:0 0 18px;font-size:14.5px;font-weight:500}
+  .article h3{font-size:22px;margin:26px 0 10px;color:var(--navy)}
+  .article p{font-size:16px;color:var(--ink2);margin:0 0 16px;line-height:1.7}
   .chips{display:flex;flex-wrap:wrap;gap:12px}
   .chip{display:inline-flex;align-items:center;background:var(--white);border:1px solid var(--line);border-radius:999px;padding:11px 20px;font-weight:700;font-size:14.5px;color:var(--navy);box-shadow:var(--sh);white-space:nowrap}
+  .clogos{display:flex;flex-wrap:wrap;gap:18px 40px;align-items:center;justify-content:center;padding:26px 28px;background:var(--white);border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--sh)}
+  .clogo{font-weight:800;font-size:clamp(15px,2.2vw,20px);letter-spacing:.02em;color:#8a90a6;filter:grayscale(1);opacity:.75;transition:opacity .2s,color .2s}
+  .clogo:hover{opacity:1;color:var(--navy)}
+  .cbtn{position:fixed;right:20px;bottom:20px;z-index:70;background:var(--blue);color:#fff;border:0;border-radius:999px;padding:15px 22px;font-family:var(--sans);font-weight:800;font-size:14.5px;cursor:pointer;box-shadow:0 12px 30px rgba(53,184,252,.4);display:inline-flex;align-items:center;gap:9px}
+  .cbtn:hover{background:var(--blue2)}
+  @supports(padding:max(0px)){.cbtn{bottom:max(20px,env(safe-area-inset-bottom))}}
+  .cback{position:fixed;inset:0;z-index:90;background:rgba(15,17,22,.5);display:none;align-items:center;justify-content:center;padding:20px}
+  .cback.open{display:flex}
+  .cmodal{background:var(--white);border-radius:var(--r);max-width:420px;width:100%;padding:28px;box-shadow:var(--sh-h);position:relative}
+  .cmodal .x{position:absolute;top:14px;right:16px;background:transparent;border:0;font-size:24px;color:var(--ink3);cursor:pointer;line-height:1}
+  @media(max-width:760px){.cbtn{padding:13px 18px;font-size:13.5px}}
   #keomap{height:440px;border-radius:var(--r);overflow:hidden;box-shadow:var(--sh);border:1px solid var(--line);z-index:0}
   .keopin-dot{width:22px;height:22px;border-radius:50%;background:var(--blue);border:3px solid #fff;box-shadow:0 0 0 7px rgba(53,184,252,.22),0 4px 12px rgba(0,0,0,.25)}
   .leaflet-popup-content{font-family:var(--sans);font-size:13.5px;color:var(--navy);line-height:1.5}
@@ -193,6 +206,22 @@
 </div></header>
 <main id="app"></main>
 <footer><div class="wrap" id="footer"></div></footer>
+<button class="cbtn" id="cbtn">Заказать звонок</button>
+<div class="cback" id="cback"><div class="cmodal">
+  <button class="x" id="cbx" aria-label="Закрыть">×</button>
+  <h3 style="margin-bottom:6px">Заказать обратный звонок</h3>
+  <p class="muted" style="font-size:13.5px;margin-bottom:18px">Оставьте телефон, эксперт KEO GROUP перезвонит и бесплатно разберёт вашу ситуацию.</p>
+  <form id="cbform" novalidate>
+    <div class="fld"><label for="cb-name">Как к вам обращаться</label><input id="cb-name" name="name" placeholder="Имя"><div class="err" id="cb-en">Впишите имя</div></div>
+    <div class="fld"><label for="cb-phone">Телефон</label><input id="cb-phone" name="phone" placeholder="+7 999 123 45 67" inputmode="tel"><div class="err" id="cb-ep">Проверьте телефон</div></div>
+    <input type="hidden" name="_subject" value="Обратный звонок с сайта KEO GROUP">
+    <div class="hp"><label>Не заполняйте<input name="_gotcha" tabindex="-1"></label></div>
+    <label class="agree" style="margin:2px 0 16px"><input type="checkbox" id="cb-agree"><span>Согласен на обработку данных по <a href="#/politika">политике</a></span></label>
+    <button type="submit" class="btn primary" id="cb-submit" style="width:100%">Жду звонка</button>
+    <div class="formnote" id="cb-note"></div>
+    <div class="okmsg" id="cb-ok">Спасибо, перезвоним в ближайшее время.</div>
+  </form>
+</div></div>
 <script>
 /* ===== ДАННЫЕ KEO GROUP ===== */
 const CO={tel:"+7 499 647-75-66",telHref:"+74996477566",email:"info@keogroup.ru",tg:"https://t.me/keogroup_ru",
@@ -341,6 +370,8 @@ function leadForm(prefill){const opts=SERVICES.map(s=>`<option${prefill===s.slug
   return `<form class="lead" id="leadform" novalidate>
     <h3 style="margin-bottom:6px">Получить разбор объекта</h3>
     <p class="muted" style="font-size:13.5px;margin-bottom:18px">Оставьте заявку, эксперт перезвонит, разберёт ситуацию и предложит план. Ни к чему не обязывает.</p>
+    <div style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:16px"><span class="chip" style="padding:7px 13px;font-size:12.5px;font-weight:700"><span style="color:var(--green);margin-right:6px">●</span>Отвечаем за 15 минут в рабочее время</span></div>
+    <div class="card" style="background:var(--soft);box-shadow:none;padding:14px 16px;margin-bottom:18px"><div class="muted" style="font-size:12.5px;font-weight:700;margin-bottom:6px">Что будет после заявки</div><div class="muted" style="font-size:13px">Разбор объекта → план и смета → договор с гарантией</div></div>
     <div class="fld"><label for="f-name">Как к вам обращаться</label><input id="f-name" name="name" placeholder="Имя" autocomplete="name"><div class="err" id="e-name">Впишите имя</div></div>
     <div class="fld"><label for="f-phone">Телефон</label><input id="f-phone" name="phone" placeholder="+7 999 123 45 67" inputmode="tel" autocomplete="tel"><div class="err" id="e-phone">Проверьте телефон, кажется коротковат</div></div>
     <div class="fld"><label for="f-svc">Услуга</label><select id="f-svc" name="service"><option value="">Выберите направление</option>${opts}</select></div>
@@ -401,6 +432,8 @@ PAGES["/"]=()=>`
     ${FAQ_DATA[0].items.slice(0,5).map(([q,a])=>`<details class="faq"><summary>${esc(q)}</summary><p>${esc(a)}</p></details>`).join('')}
     <div style="margin-top:18px"><a class="btn ghost bracket" href="#/faq">Все вопросы и ответы</a></div>
   </div></section>
+  ${clientStrip()}
+  ${trustLetters()}
   ${band("Разберём ваш объект","Оставьте заявку, эксперт перезвонит и предложит понятный план действий по вашей ситуации.")}`;
 
 PAGES["/uslugi"]=()=>`<section><div class="wrap">
@@ -527,12 +560,18 @@ PAGES["/ceny"]=()=>`
  </div></section>
  ${band("Посчитаем смету по вашему объекту","Оставьте заявку, эксперт разберёт ситуацию и назовёт точную стоимость и сроки.")}`;
 
-PAGES["/blog"]=()=>`<section><div class="wrap">
-  <p class="crumbs"><a href="#/">Главная</a> / <span>Блог</span></p>
-  <div class="sec-head"><div class="eyebrow">Экспертные статьи</div><h2>Блог KEO GROUP</h2></div>
-  <div class="grid g3">${[["Приостановка в Росреестре: что делать","Почему приостановка случается в 7 из 10 случаев и как снять её через апелляционную комиссию."],["Самострой и 819-ПП","Как исключить объект из реестра самостроя через ГЗК и признать право собственности."],["Попали в зону КРТ","Сроки изъятия, компенсация и как добиться справедливой суммы через суд."]].map(([t,d])=>`<div class="card"><h4 style="margin-bottom:8px">${esc(t)}</h4><p class="muted" style="font-size:13.5px;margin:0">${esc(d)}</p><div style="margin-top:14px"><a href="#/kontakty" style="color:var(--blue2);font-size:13px;font-weight:800">Спросить эксперта →</a></div></div>`).join('')}</div>
-  <p class="muted" style="margin-top:22px;font-size:14px">Раздел наполняется. Нужна статья по вашей теме, <a href="#/kontakty" style="color:var(--blue2);font-weight:700">напишите нам</a>.</p>
-</div></section>`;
+PAGES["/blog"]=()=>`
+ <section class="hero" style="padding-bottom:6px"><div class="wrap"><div class="row">
+   <div><p class="crumbs"><a href="#/">Главная</a> / <span>Блог</span></p>
+     <div class="eyebrow">Экспертные статьи</div><h1>Блог KEO GROUP</h1>
+     <p class="lede">Разбираем сложные темы простым языком: приостановки в Росреестре, легализация самостроя, КРТ, ВРИ, некапитальные объекты, выкуп у города.</p>
+     <div class="cta"><a class="btn primary bracket" href="#/kontakty">Задать вопрос эксперту</a></div></div>
+   <div class="pic"><img src="./images/land/faq.jpg" alt="Блог KEO GROUP"><div class="badge"><b>${ARTICLES.length}</b><span>экспертных статей</span></div></div>
+ </div></div></section>
+ <section style="padding-top:14px"><div class="wrap"><div class="grid g3">
+   ${ARTICLES.map(a=>`<a class="case" href="#/a/${a.slug}" style="display:block"><div class="ph"><img src="./images/land/${esc(a.img)}.jpg" alt="${esc(a.title)}" loading="lazy"></div><div class="b"><span class="chip" style="padding:5px 12px;font-size:11.5px;color:${a.c};border-color:color-mix(in srgb,${a.c} 30%,#fff)">${esc(a.cat)}</span><h3 style="font-size:17px;margin:12px 0 8px">${esc(a.title)}</h3><p class="muted" style="font-size:13.5px;margin:0 0 12px">${esc(a.lede)}</p><div style="display:flex;justify-content:space-between;align-items:center"><span class="ink3" style="font-size:12.5px">${esc(a.date)}</span><span class="more" style="color:${a.c};font-weight:800;font-size:13px">Читать →</span></div></div></a>`).join('')}
+ </div></div></section>
+ ${band("Остался вопрос по вашему объекту","Оставьте заявку, эксперт KEO GROUP разберёт ситуацию и ответит по сути.")}`;
 
 PAGES["/faq"]=()=>`
  <section class="hero" style="padding-bottom:6px"><div class="wrap"><div class="row">
@@ -565,10 +604,22 @@ PAGES["/kontakty"]=()=>`<section><div class="wrap">
   </div>
 </div></section>`;
 
-PAGES["/politika"]=()=>`<section><div class="wrap" style="max-width:820px"><p class="crumbs"><a href="#/">Главная</a> / <span>Политика конфиденциальности</span></p>
-  <h2 style="margin-bottom:20px">Политика конфиденциальности</h2>
-  <p class="muted">Это демонстрационная страница. В рабочей версии здесь полный текст согласия на обработку персональных данных: какие данные собираем (имя и телефон из формы), цель (связаться по заявке), что не передаём третьим лицам и как запросить удаление данных.</p>
-  <p class="muted">Заявки с форм уходят на почту компании через сервис приёма форм. База на сайте не хранится.</p>
+PAGES["/politika"]=()=>`<section><div class="wrap" style="max-width:860px">
+  <p class="crumbs"><a href="#/">Главная</a> / <span>Политика конфиденциальности</span></p>
+  <div class="eyebrow">Документы</div><h1 style="margin-bottom:8px">Политика конфиденциальности</h1>
+  <p class="muted" style="margin:0 0 26px">Как KEO GROUP обрабатывает и защищает ваши данные.</p>
+  <div class="card" style="margin-bottom:14px"><h3 style="margin-bottom:8px">1. Какие данные мы собираем</h3><p class="muted" style="margin:0">Через формы на сайте мы собираем имя и номер телефона, а также сведения об объекте, которые вы указываете сами. Иные данные мы не запрашиваем.</p></div>
+  <div class="card" style="margin-bottom:14px"><h3 style="margin-bottom:8px">2. Зачем мы их используем</h3><p class="muted" style="margin:0">Только чтобы связаться с вами по заявке, разобрать ситуацию и предложить услуги. Мы не используем данные для рассылок без вашего согласия.</p></div>
+  <div class="card" style="margin-bottom:14px"><h3 style="margin-bottom:8px">3. Передача третьим лицам</h3><p class="muted" style="margin:0">Мы не продаём и не передаём ваши данные третьим лицам. Заявки с форм поступают на нашу почту через сервис приёма форм, который выступает обработчиком.</p></div>
+  <div class="card" style="margin-bottom:14px"><h3 style="margin-bottom:8px">4. Хранение и защита</h3><p class="muted" style="margin:0">Данные хранятся столько, сколько нужно для работы по обращению. Доступ к ним имеют только сотрудники KEO GROUP. На сайте используется защищённое соединение.</p></div>
+  <div class="card" style="margin-bottom:14px"><h3 style="margin-bottom:8px">5. Ваши права</h3><p class="muted" style="margin:0">Вы можете запросить удаление своих данных или отозвать согласие, написав нам на info@keogroup.ru или позвонив по телефону компании.</p></div>
+  <div class="card" style="margin-bottom:14px"><h3 style="margin-bottom:8px">6. Согласие</h3><p class="muted" style="margin:0">Отправляя форму, вы соглашаетесь с этой политикой и на обработку указанных данных для связи по заявке.</p></div>
+  <div class="card" style="border-top:3px solid var(--blue)"><h3 style="margin-bottom:10px">Реквизиты</h3>
+    <p class="muted" style="margin:0 0 6px"><b style="color:var(--navy)">ООО «КЕО ГРУПП»</b></p>
+    <p class="muted" style="margin:0 0 6px">${esc(CO.addr)}</p>
+    <p class="muted" style="margin:0 0 6px">Телефон: ${esc(CO.tel)}, почта: ${esc(CO.email)}</p>
+    <p class="ink3" style="margin:8px 0 0;font-size:13px">ИНН и ОГРН будут добавлены после подтверждения владельцем.</p>
+  </div>
 </div></section>`;
 
 PAGES["/spasibo"]=()=>`<section><div class="wrap" style="max-width:640px;text-align:center;padding:30px 0">
@@ -707,6 +758,85 @@ const SEG=[
  {img:"vri",c:"#7a5cff",t:"Собственникам и арендаторам земли",pain:"ВРИ не совпадает с задачей: не регистрируется аренда, нельзя строить.",sol:"Сменим ВРИ, скорректируем ПЗЗ, разработаем ПМТ.",link:"vri-zemelnogo-uchastka"},
 ];
 
+/* ===== ДОВЕРИЕ: благодарности, клиенты ===== */
+const LETTERS=[
+ {org:"ООО «Вперёд»",subj:"за технический план здания",year:"2025"},
+ {org:"УК «Альфа-Капитал»",subj:"за оформление недвижимости",year:"2023"},
+ {org:"АО «ТЕОДОР»",subj:"за внесение изменений в ЕГРН",year:"2026"},
+ {org:"РСПП",subj:"за строительно-техническое исследование",year:"2024"},
+];
+const CLIENTS=["Мосводоканал","X5 Retail Group","РЖД","Leon","Ломоносовская школа"];
+function clientStrip(){return `<section style="padding:36px 0"><div class="wrap"><div class="clogos">${CLIENTS.map(x=>`<span class="clogo">${esc(x)}</span>`).join('')}</div></div></section>`;}
+function trustLetters(){return `<section style="padding-top:0"><div class="wrap"><div class="sec-head"><div class="eyebrow">Нам доверяют</div><h2>Благодарственные письма</h2><p class="lede" style="margin-top:12px">Компании и организации, которые рекомендуют KEO GROUP.</p></div>
+  <div class="grid g4">${LETTERS.map(l=>`<div class="card" style="display:flex;flex-direction:column;gap:8px"><div style="width:46px;height:46px;border-radius:12px;background:color-mix(in srgb,var(--blue) 14%,#fff);color:var(--blue2);display:flex;align-items:center;justify-content:center">${OIC.doc}</div><h3 style="font-size:16px;margin:6px 0 0">${esc(l.org)}</h3><p class="muted" style="font-size:13.5px;margin:0">${esc(l.subj)}</p><div class="ink3" style="font-size:12.5px;margin-top:auto">Благодарственное письмо, ${esc(l.year)}</div></div>`).join('')}</div></div></section>`;}
+
+/* ===== БЛОГ: экспертные статьи ===== */
+const ARTICLES=[
+ {slug:"priostanovka-rosreestr",img:"rosreestr",c:"#27c281",cat:"Росреестр",date:"Июнь 2026",
+  title:"Приостановка в Росреестре: почему случается и как снять",
+  lede:"Около 7 из 10 заявок без профессиональной подготовки получают приостановку. Разбираем причины и понятный план действий.",
+  body:`<h3>Что такое приостановка</h3><p>Приостановка это решение государственного регистратора временно не проводить регистрацию, пока вы не устраните замечания. Это ещё не отказ, но если ничего не сделать, дело закончится именно отказом.</p>
+  <h3>Почему она случается</h3><p>Чаще всего причина в документах: ошибки и неточности в техническом плане, неполный пакет, расхождения в сведениях ЕГРН, вопросы к полномочиям заявителя. Без профильной подготовки приостановка происходит примерно в 7 случаях из 10.</p>
+  <h3>Сколько есть времени</h3><p>На устранение причин даётся около 3 месяцев. После подачи дополнительных документов регистратор возобновляет процедуру и обычно завершает её за несколько рабочих дней.</p>
+  <h3>Что делать</h3><p>Сначала разбираем точную причину из уведомления. Если она обоснована, исправляем документы и подаём повторно. Если нет, обжалуем через апелляционную комиссию, на это отводится 30 дней. Важно не подавать заявку повторно вслепую, это ведёт к новому кругу приостановок.</p>
+  <h3>Как не попасть снова</h3><p>Готовить документы с учётом требований конкретного объекта и заранее проверять сведения ЕГРН. Мы берём это на себя и доводим до выписки под ключ.</p>`},
+ {slug:"legalizaciya-819pp",img:"legal",c:"#7a5cff",cat:"Легализация",date:"Июнь 2026",
+  title:"Легализация самостроя по 819-ПП: как узаконить через ГЗК",
+  lede:"Если объект в реестре самостроя, его нельзя свободно продать или заложить, есть риск сноса. Рассказываем, как пройти путь до права собственности.",
+  body:`<h3>Что значит попасть в 819-ПП</h3><p>Это московский перечень объектов с признаками самовольного строительства. Пока объект в нём, сделки с ним блокируются, а город может инициировать снос.</p>
+  <h3>Через что идёт легализация</h3><p>Ключевой орган это Градостроительно-земельная комиссия Москвы. Именно её положительное решение, оформленное протоколом, позволяет сохранить объект и оформить право собственности на возведённые площади.</p>
+  <h3>Какие документы нужны</h3><p>Готовится комплект: заключение о соответствии (ЗОС), архитектурно-градостроительный облик (АГР), паспорт безопасности и обоснование. Это техническая и правовая база, которую смотрит комиссия.</p>
+  <h3>Сколько занимает</h3><p>Обычно от 5 до 15 месяцев в зависимости от объекта, истории и согласований с ресурсниками. По части объектов требуется согласование с Мосводоканалом и Мосводостоком.</p>
+  <h3>Что в итоге</h3><p>Протокол ГЗК о сохранении, исключение из реестра 819-ПП и признанное право собственности. После этого объект снова можно использовать и продавать.</p>`},
+ {slug:"krt-kompensaciya",img:"krt",c:"#7a5cff",cat:"КРТ",date:"Июнь 2026",
+  title:"Попали в зону КРТ: как добиться справедливой компенсации",
+  lede:"За 5,5 месяцев 2026 в Москве и области принято свыше 220 решений об изъятии. Госоценка часто занижает стоимость. Что можно сделать.",
+  body:`<h3>Что такое КРТ</h3><p>Комплексное развитие территории. Город реорганизует участок, а объекты на нём могут изъять с выплатой компенсации. Решения принимаются массово, поэтому важно действовать на опережение.</p>
+  <h3>Сколько времени на решение</h3><p>Ориентир около 90 дней на подписание соглашения о компенсации. Если не согласиться с суммой, спор переходит в суд.</p>
+  <h3>Почему первая сумма обычно занижена</h3><p>Государственная оценка системно ниже рынка. Она часто не учитывает упущенную выгоду, улучшения и реальное использование объекта.</p>
+  <h3>Как добиться большего</h3><p>Через независимую судебную экспертизу. Она оценивает рыночную стоимость и убытки по-настоящему, поэтому итоговая компенсация выходит заметно выше начальной.</p>
+  <h3>Что входит в компенсацию</h3><p>Рыночная стоимость объекта, убытки, упущенная выгода, в ряде случаев стоимость оборудования. Чем раньше подключиться, тем больше пространства для защиты.</p>`},
+ {slug:"smena-vri",img:"vri",c:"#7a5cff",cat:"Земля",date:"Июнь 2026",
+  title:"Смена ВРИ участка: зачем нужна и сколько стоит ошибка",
+  lede:"Неверный вид разрешённого использования блокирует аренду, стройку и повышает налог. Разбираем, когда и как менять ВРИ.",
+  body:`<h3>Почему ВРИ так важен</h3><p>Росреестр не зарегистрирует договор аренды, если назначение помещения не совпадает с видом разрешённого использования участка. Это прямо следует из ст. 37 Градостроительного кодекса.</p>
+  <h3>Чем грозит нецелевое использование</h3><p>Штраф от 1,5 до 2 процентов кадастровой стоимости, но не менее 100 000 рублей для юрлиц. Плюс может вырасти земельный налог.</p>
+  <h3>Два пути смены ВРИ</h3><p>Если нужный вид есть в градостроительном регламенте зоны, достаточно заявления. Если нет, меняем правила землепользования и застройки через Департамент градполитики и ГЗК, это дольше.</p>
+  <h3>Что такое ПМТ</h3><p>Проект межевания территории. Он определяет границы участков и нужен для присоединения земель, изменения границ и образования новых участков.</p>
+  <h3>Сроки</h3><p>ВРИ без ПЗЗ обычно 2-4 месяца, через ПЗЗ 6-10 месяцев. Точный срок зависит от участка и зоны.</p>`},
+ {slug:"nekapitalka-636",img:"nekapitalka",c:"#35b8fc",cat:"Некапитальные объекты",date:"Июнь 2026",
+  title:"Некапитальные объекты: как согласовать и избежать сноса",
+  lede:"Павильоны, склады и навесы без согласования сносят без компенсации. Дедлайн легализации по 1255-ПП это 1 сентября 2027 года.",
+  body:`<h3>Что считается некапитальным</h3><p>Павильоны, киоски, склады, ангары, навесы и модульные здания без заглублённого фундамента, которые можно переместить без ущерба.</p>
+  <h3>636-ПП и 1255-ПП</h3><p>636-ПП регулирует размещение на городской земле через ДГИ. 1255-ПП с 1 сентября 2024 года касается размещения на частной земле по новой процедуре.</p>
+  <h3>Чем грозит отсутствие согласования</h3><p>Снос без компенсации, штраф для юрлиц до 1 млн рублей, приостановка бизнеса и блокировка операций с имуществом.</p>
+  <h3>Дедлайн</h3><p>Ориентир легализации по 1255-ПП это 1 сентября 2027 года. Чем ближе срок, тем плотнее очереди и проверки ГИН, поэтому лучше не ждать.</p>
+  <h3>Как проходит согласование</h3><p>Аудит, разработка проекта, подача, сопровождение на комиссии и получение разрешительной документации. Обычно 45-75 дней.</p>`},
+ {slug:"vykup-159fz",img:"dgi",c:"#ff8a3d",cat:"ДГИ",date:"Июнь 2026",
+  title:"Выкуп помещения у города по 159-ФЗ: кому положен и как не переплатить",
+  lede:"Малый и средний бизнес имеет преимущественное право выкупа арендуемых городских помещений. Но оценка города часто завышена.",
+  body:`<h3>Кому положен выкуп</h3><p>Субъектам малого и среднего предпринимательства, которые арендуют помещение у города от 2 лет и не имеют долгов по аренде.</p>
+  <h3>В чём подвох</h3><p>Цена выкупа определяется по оценке, и она нередко завышена на 30-80 процентов относительно рынка. Переплата может быть существенной.</p>
+  <h3>Как снизить цену</h3><p>Через независимую оценку и при необходимости суд. По таким делам стоимость выкупа снижают в разы.</p>
+  <h3>Другие споры с ДГИ</h3><p>Доначисления аренды и неустойки, требования о расторжении, штрафы за нецелевое использование. Многие из них можно оспорить или снизить.</p>
+  <h3>С чего начать</h3><p>С проверки права на выкуп и анализа оценки. На разборе сразу видно, есть ли основания снижать цену и оспаривать условия.</p>`},
+];
+
+function articlePage(slug){const a=ARTICLES.find(x=>x.slug===slug);if(!a)return null;const other=ARTICLES.filter(x=>x.slug!==slug).slice(0,3);
+ return `<section class="hero" style="padding-bottom:6px"><div class="wrap"><div class="row">
+   <div><p class="crumbs"><a href="#/">Главная</a> / <a href="#/blog">Блог</a> / <span>${esc(a.cat)}</span></p>
+     <span class="chip" style="padding:6px 14px;font-size:12px;color:${a.c};border-color:color-mix(in srgb,${a.c} 30%,#fff);margin-bottom:14px">${esc(a.cat)}</span>
+     <h1 style="font-size:clamp(28px,4vw,44px)">${esc(a.title)}</h1><p class="lede">${esc(a.lede)}</p><div class="ink3" style="font-size:13px;margin-top:12px">${esc(a.date)}</div></div>
+   <div class="pic"><img src="./images/land/${esc(a.img)}.jpg" alt="${esc(a.title)}"></div>
+ </div></div></section>
+ <section style="padding-top:16px"><div class="wrap" style="max-width:760px"><div class="article">${a.body}</div>
+   <div style="margin-top:30px"><a class="btn primary bracket" href="#/kontakty">Получить разбор объекта</a> <a class="btn ghost bracket" href="#/blog">Все статьи</a></div>
+ </div></section>
+ <section style="padding-top:0"><div class="wrap"><div class="sec-head"><div class="eyebrow">Читайте также</div><h2>Другие статьи</h2></div>
+   <div class="grid g3">${other.map(x=>`<a class="case" href="#/a/${x.slug}" style="display:block"><div class="ph"><img src="./images/land/${esc(x.img)}.jpg" alt="${esc(x.title)}" loading="lazy"></div><div class="b"><h3 style="font-size:16px;margin:0 0 8px">${esc(x.title)}</h3><span class="more" style="color:${x.c};font-weight:800;font-size:13px">Читать →</span></div></a>`).join('')}</div>
+ </div></section>
+ ${band("Разберём вашу ситуацию","Оставьте заявку, эксперт оценит объект и предложит план.")}`;
+}
 function servicePage(slug){
  if(slug==="upravlenie-nedvizhimostyu")return richMgmt();
  if(RICH[slug])return richLanding(slug);
@@ -948,7 +1078,8 @@ function initMap(){
 }
 function render(){
   let h=location.hash.replace(/^#/,'')||'/';let html=null,m;
-  if(m=h.match(/^\/u\/([a-z0-9-]+)$/)) html=servicePage(m[1]);
+  if(m=h.match(/^\/a\/([a-z0-9-]+)$/)) html=articlePage(m[1]);
+  else if(m=h.match(/^\/u\/([a-z0-9-]+)$/)) html=servicePage(m[1]);
   else if(m=h.match(/^\/g\/([a-z]+)$/)) html=groupPage(m[1]);
   else if(PAGES[h]) html=PAGES[h]();
   if(!html) html=`<section><div class="wrap" style="text-align:center;padding:80px 0"><div class="eyebrow">Страница не найдена</div><h2 style="margin-bottom:14px">Тут пусто</h2><p class="lede" style="margin:0 auto 24px">Такой страницы нет. Вернитесь на главную.</p><a class="btn primary bracket" href="#/">На главную</a></div></section>`;
@@ -959,6 +1090,24 @@ function render(){
   window.scrollTo(0,0);wireForm();if(h==='/kontakty'){setTimeout(initMap,60);}
 }
 document.getElementById('burger').onclick=()=>document.getElementById('menu').classList.toggle('open');
+(function(){
+  var btn=document.getElementById('cbtn'),back=document.getElementById('cback');if(!btn)return;
+  function open(){back.classList.add('open');}function close(){back.classList.remove('open');}
+  btn.onclick=open;document.getElementById('cbx').onclick=close;
+  back.addEventListener('click',function(e){if(e.target===back)close();});
+  var f=document.getElementById('cbform'),nm=document.getElementById('cb-name'),ph=document.getElementById('cb-phone'),ag=document.getElementById('cb-agree'),sb=document.getElementById('cb-submit'),note=document.getElementById('cb-note'),ok=document.getElementById('cb-ok');
+  var en=document.getElementById('cb-en'),ep=document.getElementById('cb-ep');
+  note.textContent=FORM_ENDPOINT?'':'Демо-режим: заявка пока не уходит. Впишите адрес Formspree в Настройках.';
+  f.addEventListener('submit',async function(e){e.preventDefault();
+    var okN=nm.value.trim().length>=2,okP=ph.value.replace(/\D/g,'').length>=10;
+    nm.classList.toggle('bad',!okN);en.classList.toggle('show',!okN);ph.classList.toggle('bad',!okP);ep.classList.toggle('show',!okP);
+    if(!(okN&&okP&&ag.checked))return;
+    if(f._gotcha&&f._gotcha.value)return;
+    sb.disabled=true;sb.textContent='Отправляем…';
+    if(!FORM_ENDPOINT){setTimeout(function(){ok.classList.add('show');f.reset();sb.textContent='Жду звонка';sb.disabled=false;},700);return;}
+    try{var r=await fetch(FORM_ENDPOINT,{method:'POST',headers:{Accept:'application/json'},body:new FormData(f)});if(r.ok){ok.classList.add('show');f.reset();}sb.disabled=false;sb.textContent='Жду звонка';}catch(_){sb.disabled=false;sb.textContent='Жду звонка';}
+  });
+})();
 window.addEventListener('hashchange',render);
 renderChrome();render();
 </script>
