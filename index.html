@@ -170,6 +170,14 @@
   .owitem b{display:block;color:var(--navy);font-size:15px;margin-bottom:3px}
   .owitem p{margin:0;color:var(--ink2);font-size:13.5px;line-height:1.55}
   @media(max-width:760px){.owlist{grid-template-columns:1fr}.fchips{gap:8px}.fchip{font-size:12.5px;padding:8px 14px}}
+  .owinset{display:grid;grid-template-columns:1fr 1fr;border-radius:var(--r-lg);overflow:hidden;box-shadow:var(--sh);background:var(--white);border:1px solid var(--line)}
+  .owpic{min-height:330px}
+  .owpic img{width:100%;height:100%;object-fit:cover;display:block}
+  .owtext{padding:42px}
+  .owul{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:11px}
+  .owul li{position:relative;padding-left:32px;color:var(--ink2);font-size:14.5px;font-weight:500;line-height:1.45}
+  .owul li::before{content:"\2713";position:absolute;left:0;top:1px;width:21px;height:21px;border-radius:50%;background:color-mix(in srgb,var(--green) 16%,#fff);color:var(--green);display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:800}
+  @media(max-width:860px){.owinset{grid-template-columns:1fr}.owpic{min-height:210px}.owtext{padding:28px}}
   .cbtn{position:fixed;right:20px;bottom:20px;z-index:70;background:var(--blue);color:#fff;border:0;border-radius:999px;padding:15px 22px;font-family:var(--sans);font-weight:800;font-size:14.5px;cursor:pointer;box-shadow:0 12px 30px rgba(53,184,252,.4);display:inline-flex;align-items:center;gap:9px}
   .cbtn:hover{background:var(--blue2)}
   @supports(padding:max(0px)){.cbtn{bottom:max(20px,env(safe-area-inset-bottom))}}
@@ -227,7 +235,7 @@
   <a class="logo" href="#/"><span class="m">KEO</span><span><b>GROUP</b><small>Недвижимость под ключ</small></span></a>
   <nav class="menu" id="menu"></nav>
   <div class="right">
-    <a class="tel" href="tel:+74996477566">+7 499 647-75-66<small>Москва, без выходных</small></a>
+    <a class="tel" href="tel:+74996477566">+7 499 647-75-66<small>Будни с 9 до 18</small></a>
     <button class="burger" id="burger" aria-label="Меню">☰</button>
   </div>
 </div></header>
@@ -253,7 +261,7 @@
 <script>
 /* ===== ДАННЫЕ KEO GROUP ===== */
 const CO={tel:"+7 499 647-75-66",telHref:"+74996477566",email:"info@keogroup.ru",tg:"https://t.me/keogroup_ru",
-  addr:"Москва, 2-й Южнопортовый проезд, 20А стр.4 (м. Кожуховская)",hours:"Будни и выходные, 9:00 до 19:00"};
+  addr:"Москва, 2-й Южнопортовый проезд, 20А стр.4 (м. Кожуховская)",hours:"Будни с 9:00 до 18:00, суббота и воскресенье выходной"};
 const GROUPS=[
  {key:"stroyka",c:"var(--blue)",title:"Строительство и проектирование",desc:"От участка и проекта до ввода и записи в ЕГРН. Реконструкция без остановки бизнеса, новое строительство, АГР."},
  {key:"legal",c:"var(--red)",title:"Легализация и земля",desc:"Самострой по 819-ПП, защита в зоне КРТ, смена ВРИ, ПМТ и ПЗЗ, прохождение ГЗК. Сложные случаи на стыке права и градостроительства."},
@@ -392,6 +400,13 @@ function trustBar(){return `<div class="trust"><div class="wrap"><div class="row
   <div class="t"><b>30 000+</b><span>кв.м узаконено</span></div>
   <div class="t hl"><b>100%</b><span>положительных решений ГЗК</span></div>
 </div></div></div>`;}
+function oneWindowInset(){return `<section style="padding-top:0"><div class="wrap"><div class="owinset">
+  <div class="owpic"><img src="./images/land/odno-okno.jpg" alt="Единое окно KEO GROUP" loading="lazy"></div>
+  <div class="owtext"><div class="eyebrow">Единое окно</div><h2 style="margin-bottom:12px">Весь объект ведём в одном окне</h2>
+    <p class="muted" style="font-size:15px;margin:0 0 18px">Не нужно собирать подрядчиков и бегать по инстанциям. Опишите задачу, дальше всё берём на себя, а вы спокойно занимаетесь делом.</p>
+    <ul class="owul"><li>Один договор и один ответственный за объект</li><li>Юристы, кадастровые инженеры и градостроители в штате</li><li>Росреестр, ДГИ, ГЗК и БТИ берём на себя</li></ul>
+    <a class="btn primary bracket" href="#/kontakty" style="margin-top:20px">Передать объект в одно окно</a>
+  </div></div></div></section>`;}
 function band(t,p){return `<section style="padding-top:0"><div class="wrap"><div class="band"><h2>${t}</h2><p>${p}</p><a class="btn primary bracket" href="#/kontakty">Получить разбор объекта</a></div></div></section>`;}
 function scard(s){const g=groupByKey(s.g);return `<a class="scard" href="#/u/${s.slug}" style="--c:${g.c}"><h4>${esc(s.name)}</h4><p>${esc(s.note)}</p>${s.price?`<div class="price">${esc(s.price)}</div>`:''}<span class="more">Подробнее →</span></a>`;}
 function leadForm(prefill){const opts=SERVICES.map(s=>`<option${prefill===s.slug?' selected':''}>${esc(s.name)}</option>`).join('');
@@ -1126,9 +1141,9 @@ function initMap(){
 function render(){
   let h=location.hash.replace(/^#/,'')||'/';let html=null,m;
   if(m=h.match(/^\/a\/([a-z0-9-]+)$/)) html=articlePage(m[1]);
-  else if(m=h.match(/^\/u\/([a-z0-9-]+)$/)) html=servicePage(m[1]);
+  else if(m=h.match(/^\/u\/([a-z0-9-]+)$/)){ html=servicePage(m[1]); if(html) html+=oneWindowInset(); }
   else if(m=h.match(/^\/g\/([a-z]+)$/)) html=groupPage(m[1]);
-  else if(PAGES[h]) html=PAGES[h]();
+  else if(PAGES[h]){ html=PAGES[h](); if((h==='/segmenty'||h==='/uslugi')&&html) html+=oneWindowInset(); }
   if(!html) html=`<section><div class="wrap" style="text-align:center;padding:80px 0"><div class="eyebrow">Страница не найдена</div><h2 style="margin-bottom:14px">Тут пусто</h2><p class="lede" style="margin:0 auto 24px">Такой страницы нет. Вернитесь на главную.</p><a class="btn primary bracket" href="#/">На главную</a></div></section>`;
   document.getElementById('app').innerHTML=html;
   const root='/'+(h.split('/')[1]||'');
