@@ -1,7 +1,7 @@
 {
   "date": "2026-06-24",
   "slug": "keo-grupp",
-  "passed": 23,
+  "passed": 22,
   "total": 23,
   "items": [
     {
@@ -61,7 +61,7 @@
     {
       "cat": "Наполнение",
       "name": "Блог с экспертными статьями",
-      "ok": true,
+      "ok": false,
       "note": ""
     },
     {
