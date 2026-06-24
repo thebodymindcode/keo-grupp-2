@@ -1,7 +1,7 @@
 {
   "date": "2026-06-24",
   "slug": "keo-grupp",
-  "passed": 21,
+  "passed": 22,
   "total": 23,
   "items": [
     {
@@ -133,7 +133,7 @@
     {
       "cat": "Техника",
       "name": "Без длинных тире",
-      "ok": false,
+      "ok": true,
       "note": ""
     },
     {
