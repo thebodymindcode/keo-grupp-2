@@ -597,7 +597,7 @@ PAGES["/o-kompanii"]=()=>`
  </div></div></section>
  ${trustBar()}
  <section style="padding-top:10px"><div class="wrap"><div class="grid g2" style="gap:40px;align-items:start">
-   <div><div class="sec-head" style="margin-bottom:16px"><div class="eyebrow">Подход</div><h2>Единое окно вместо десяти подрядчиков</h2></div>
+   <div><div class="sec-head" style="margin-bottom:16px"><div class="eyebrow">Подход</div><h2>Право, кадастр и стройка в одной команде</h2></div>
      <p class="muted" style="font-size:16px">Сложные объекты живут на стыке права, кадастра и градостроительства. Мы собрали эти компетенции в одной команде, поэтому никто не перекидывает ответственность, а вы общаетесь с одним проектным менеджером. У нас собственный проектный отдел, а специалисты прошли работу в Росреестре и БТИ, поэтому процедуры мы знаем изнутри. Результат закрепляем в договоре.</p></div>
    <div class="grid" style="gap:14px">
      <div class="card" style="border-left:3px solid var(--blue)"><h3 style="font-size:17px">Юристы по недвижимости</h3><p class="muted" style="font-size:14px;margin:6px 0 0">Сделки, споры, легализация, ГЗК, суды</p></div>
@@ -945,6 +945,8 @@ function articlePage(slug){const a=ARTICLES.find(x=>x.slug===slug);if(!a)return 
  </div></section>
  ${band("Разберём вашу ситуацию","Оставьте заявку, эксперт оценит объект и предложит план.")}`;
 }
+const GROUP_WHY={stroyka:"Строим и узакониваем, не останавливая бизнес",legal:"Беремся за то, от чего отказались другие",kadastr:"Доводим до записи в ЕГРН, без хождения по кругу",dgi:"Отстаиваем ваши интересы в спорах с городом",upravlenie:"Держим объект в порядке и в доходе"};
+function whyHead(k){return GROUP_WHY[k]||"Полный цикл в одной команде";}
 function servicePage(slug){
  if(slug==="upravlenie-nedvizhimostyu")return richMgmt();
  if(RICH[slug])return richLanding(slug);
@@ -976,13 +978,13 @@ function servicePage(slug){
    <div class="grid g4">${GEN_STEPS.map(([n,t,d])=>`<div class="card"><div style="font-size:38px;font-weight:800;color:${c};line-height:1;margin-bottom:12px">${n}</div><h3 style="font-size:17px;margin-bottom:8px">${esc(t)}</h3><p class="muted" style="font-size:13.5px;margin:0">${esc(d)}</p></div>`).join('')}</div>
  </div></section>
  ${outc}
- <section style="padding-top:0"><div class="wrap"><div class="sec-head"><div class="eyebrow" style="color:${c}">Почему КЕО</div><h2>Единое окно вместо десяти подрядчиков</h2></div>
+ <section style="padding-top:0"><div class="wrap"><div class="sec-head"><div class="eyebrow" style="color:${c}">Почему КЕО</div><h2>${whyHead(g.key)}</h2></div>
    <div class="grid g4">${WHY.map(([ic,t,d])=>`<div class="card"><div style="color:${c};margin-bottom:14px">${ic}</div><h3 style="font-size:17px;margin-bottom:8px">${esc(t)}</h3><p class="muted" style="font-size:13.5px;margin:0">${esc(d)}</p></div>`).join('')}</div>
  </div></section>
  ${risks}
  ${gr.who?`<section style="padding-top:0"><div class="wrap"><div class="sec-head"><div class="eyebrow" style="color:${c}">Когда нужна</div><h2>Кому подходит</h2></div><div class="grid g3">${gr.who.map(x=>`<div class="card" style="display:flex;gap:12px;align-items:flex-start"><span style="flex:0 0 auto;width:26px;height:26px;border-radius:8px;background:color-mix(in srgb,${c} 16%,#fff);color:${c};display:flex;align-items:center;justify-content:center;font-weight:800">✓</span><p class="muted" style="margin:0;font-size:14.5px">${esc(x)}</p></div>`).join('')}</div></div></section>`:''}
  ${gr.outcomes?`<section style="padding-top:0"><div class="wrap"><div class="sec-head"><div class="eyebrow" style="color:${c}">Результат</div><h2>Что вы получаете на руки</h2></div><div class="grid g3">${gr.outcomes.map(([ic,t,dd])=>`<div class="card"><div style="width:54px;height:54px;border-radius:14px;display:flex;align-items:center;justify-content:center;background:color-mix(in srgb,${c} 14%,#fff);color:${c};margin-bottom:16px">${ic}</div><h3 style="font-size:18px;margin-bottom:8px">${esc(t)}</h3><p class="muted" style="font-size:14px;margin:0">${esc(dd)}</p></div>`).join('')}</div></div></section>`:''}
- <section style="padding-top:0"><div class="wrap"><div class="sec-head"><div class="eyebrow" style="color:${c}">Почему КЕО</div><h2>Единое окно вместо десяти подрядчиков</h2></div><div class="grid g4">${WHY.map(([ic,t,dd])=>`<div class="card"><div style="color:${c};margin-bottom:14px">${ic}</div><h3 style="font-size:17px;margin-bottom:8px">${esc(t)}</h3><p class="muted" style="font-size:13.5px;margin:0">${esc(dd)}</p></div>`).join('')}</div></div></section>
+ 
  <section style="padding-top:0"><div class="wrap" style="max-width:860px"><div class="sec-head"><div class="eyebrow" style="color:${c}">Вопросы</div><h2>Частые вопросы</h2></div>
    ${faqList.map(([q,a])=>`<details class="faq"><summary>${esc(q)}</summary><p>${esc(a)}</p></details>`).join('')}
  </div></section>
