@@ -291,6 +291,16 @@
     .trust .row{gap:12px}
     .band{padding:38px 22px}
   }
+  @media(max-width:1160px){
+    .menu{position:fixed;inset:82px 0 auto 0;flex-direction:column;align-items:stretch;background:#fff;border-bottom:1px solid var(--line);padding:14px;gap:2px;transform:translateY(-150%);transition:transform .25s;max-height:84vh;overflow:auto;margin:0;z-index:60}
+    .menu.open{transform:translateY(0)}
+    .menu>a,.menu .drop>a{padding:14px;font-size:16px}
+    .mega{display:none!important}
+    .drop.open .mega{display:block}
+    .mega .in{grid-template-columns:1fr;padding:6px 0 6px 12px;gap:6px}
+    .nav .right .tel{display:none}
+    .burger{display:inline-flex;align-items:center;justify-content:center}
+  }
 </style>
 </head>
 <body>
@@ -967,7 +977,8 @@ function servicePage(slug){
  <section style="padding-top:10px"><div class="wrap"><div class="grid g2" style="gap:40px;align-items:start">
    <div><div class="sec-head" style="margin-bottom:18px"><div class="eyebrow" style="color:${c}">Об услуге</div><h2 style="font-size:30px">Что это и что входит</h2></div>
      <p class="muted" style="font-size:16px">${esc(s.body)}</p>
-     <ul class="ulist" style="margin-top:18px">${s.points.map(x=>`<li>${esc(x)}</li>`).join('')}</ul></div>
+     <ul class="ulist" style="margin-top:18px">${s.points.map(x=>`<li>${esc(x)}</li>`).join('')}</ul>
+     <div class="card" style="margin-top:24px;background:var(--soft);box-shadow:none;border:1px solid var(--line)"><div style="font-weight:800;color:var(--navy);margin-bottom:10px;font-size:15px">Почему берут именно нас</div><ul class="ulist" style="margin:0"><li>Юристы, кадастровые инженеры и градостроители в одной команде</li><li>Согласования с госорганами берём на себя</li><li>Сроки и результат закрепляем в договоре</li></ul></div></div>
    <div style="position:sticky;top:100px">${leadForm(slug)}</div>
  </div></div></section>
  ${who}
