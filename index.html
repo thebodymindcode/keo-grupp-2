@@ -317,19 +317,6 @@
     .burger{display:inline-flex;align-items:center;justify-content:center}
   }
 
-.krtc{background:var(--white);border:1px solid var(--line);border-radius:var(--r);overflow:hidden;box-shadow:var(--sh)}
-.krtc-top{background:linear-gradient(180deg,#fff7f0,#fdeede);padding:24px;text-align:center;border-bottom:1px solid var(--line)}
-.krtc-badge{display:inline-block;background:#fff;border:1px solid var(--line);color:var(--blue);font-size:11px;font-weight:800;letter-spacing:.04em;text-transform:uppercase;padding:6px 14px;border-radius:999px}
-.krtc-pct{font-size:clamp(38px,8vw,56px);font-weight:800;color:var(--blue);line-height:1;margin:16px 0 4px}
-.krtc-pcl{font-size:14px;color:var(--ink2)}
-.krtc-body{padding:22px}
-.krtc-head{display:flex;justify-content:space-between;align-items:baseline;gap:10px;font-size:14px;color:var(--ink2);padding-bottom:14px;border-bottom:1px solid var(--line);font-variant-numeric:tabular-nums}
-.krtc-head b{color:var(--navy);white-space:nowrap}
-.krtc-adr{font-size:14.5px;color:var(--navy);background:var(--bg);border-radius:var(--r-sm);padding:13px 14px;margin:14px 0;line-height:1.4}
-.krtc-row{display:flex;justify-content:space-between;align-items:center;gap:12px;background:var(--bg);border-radius:var(--r-sm);padding:13px 14px;margin-bottom:10px;font-size:14.5px;color:var(--ink2);font-variant-numeric:tabular-nums}
-.krtc-row>span{flex:1 1 auto}
-.krtc-row s{color:var(--ink3)}.krtc-row b{font-weight:800;white-space:nowrap}
-.krtc-gain{background:#eaf7ef;color:#1a8a4f;margin-bottom:0}.krtc-gain b{color:#1a8a4f}
 .ulx{text-decoration:underline;text-decoration-color:var(--blue);text-decoration-thickness:2px;text-underline-offset:4px}</style>
 </head>
 <body>
@@ -1245,20 +1232,8 @@ const KRT_CASES=[
  {num:"А40-78749/23",adr:"Москва, проспект Маршала Жукова, д. 25, корп. 1",area:"61,2 м²",dgi:"29 724 000",exp:"54 210 911",add:"24 486 911",pct:"+82%"},
  {num:"А40-256599/23",adr:"Москва, Дмитровское шоссе, д. 61, корп. 1, пом. 1/1",area:"174,6 м²",dgi:"32 043 550",exp:"58 258 205",add:"26 214 655",pct:"+82%"},
 ];
-function krtCases(){return `<section style="padding-top:0"><div class="wrap">
- <div class="sec-head"><div class="eyebrow" style="color:var(--blue)">Портфолио</div><h2>Реальные дела по КРТ</h2>
-  <p class="lede" style="margin-top:12px">Город предлагает компенсацию по своей оценке, она занижена. Через суд и независимую экспертизу добиваемся справедливой суммы. Вот выигранные дела, каждое можно проверить в картотеке kad.arbitr.ru по номеру.</p></div>
- <div class="grid g2">${KRT_CASES.map(k=>`<div class="krtc">
-   <div class="krtc-top"><span class="krtc-badge">✓ Решение суда</span><div class="krtc-pct">${esc(k.pct)}</div><div class="krtc-pcl">увеличение компенсации</div></div>
-   <div class="krtc-body">
-    <div class="krtc-head"><span>Дело № ${esc(k.num)}</span><b>${esc(k.area)}</b></div>
-    <div class="krtc-adr">${esc(k.adr)}</div>
-    <div class="krtc-row"><span>Оценка ДГИ (ООО «Аверс»)</span><s>${esc(k.dgi)} ₽</s></div>
-    <div class="krtc-row"><span>Судебная экспертиза</span><b style="color:var(--blue)">${esc(k.exp)} ₽</b></div>
-    <div class="krtc-row krtc-gain"><span>Дополнительно получено</span><b>+${esc(k.add)} ₽</b></div>
-   </div></div>`).join('')}</div>
- <p class="muted" style="margin-top:22px;font-size:14px">Итого по этим делам взыскано сверх оценки города более 75 млн рублей, средний прирост компенсации +109%. Результат каждого дела закреплён решением суда.</p>
-</div></section>`;}
+function krtCard(k){return `<div class="case court"><div class="b"><div class="res" style="font-size:22px;color:#ef7320">${esc(k.pct)}</div><h4 style="margin:6px 0 0;font-size:16px">${esc(k.adr.replace("Москва, ",""))}</h4><div class="meta"><span>${esc(k.area)}</span><span>Изъятие по КРТ</span></div><p class="muted" style="font-size:13px;margin:10px 0 0">Город предложил компенсацию по заниженной оценке. Через независимую судебную экспертизу добились справедливой суммы.</p><div class="court-prep">Оценка ДГИ (ООО «Аверс») ${esc(k.dgi)} ₽, судебная экспертиза ${esc(k.exp)} ₽. Дополнительно получено +${esc(k.add)} ₽.</div><div class="court-foot"><span class="court-num">Дело № ${esc(k.num)}</span><span class="court-resp">Арбитражный суд города Москвы</span></div><div class="court-win">✓ Компенсация увеличена судом</div></div></div>`;}
+function krtCases(){return `<section style="padding-top:0"><div class="wrap"><div class="sec-head"><div class="eyebrow" style="color:#ef7320">Судебная практика по КРТ</div><h2>Выигранные дела по компенсации</h2><p class="lede" style="margin-top:12px">Реальные арбитражные дела с номерами. Город изымал помещение по программе КРТ по заниженной оценке, а мы через независимую судебную экспертизу добивались справедливой компенсации. Любое дело можно проверить в картотеке kad.arbitr.ru по номеру.</p></div><div class="grid g2">${KRT_CASES.map(krtCard).join('')}</div><p class="muted" style="margin-top:22px;font-size:14px">Итого по этим делам взыскано сверх оценки города более 75 млн рублей, средний прирост компенсации +109%.</p></div></section>`;}
 function richLanding(slug){const d=RICH[slug];if(!d)return null;const s=svcBySlug[slug];const g=groupByKey(d.group);const c=g.c;const gr=GROUP_RICH[d.group]||{};
  const rel=svcByGroup(d.group).filter(x=>x.slug!==slug).slice(0,3);
  return `<section class="hero"><div class="wrap"><div class="row">
