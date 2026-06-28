@@ -78,10 +78,19 @@ p,li{text-wrap:pretty}
  .slide{min-height:auto;padding:48px 22px}
 }
 @media print{@page{size:A4 landscape;margin:0}html{scroll-snap-type:none}body{-webkit-print-color-adjust:exact;print-color-adjust:exact}.slide{min-height:auto;height:210mm;page-break-after:always}}
+
+.wordmark{font-family:"Archivo Black",sans-serif;letter-spacing:-.02em;line-height:1;color:#fff;white-space:nowrap}
+.wordmark b{color:var(--orange);font-weight:400}
+.wm-tag{font-family:"Montserrat",sans-serif;font-weight:700;text-transform:uppercase;letter-spacing:.24em}
+.cover-wm{font-size:clamp(46px,9vw,104px)}
+.cover .wm-tag{margin-top:16px;font-size:13px}
+.logobox-wm{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;min-height:250px}
+.logobox-wm .wordmark{font-size:clamp(40px,7vw,66px)}
+.logobox-wm .wm-tag{font-size:12px}
 </style></head><body>
 
 <section class="slide cover">
- <img class="logo" src="./images/brand/keo-logo.jpg" alt="KEO GROUP">
+ <div class="wordmark cover-wm">KEO <b>GROUP</b></div><div class="wm-tag" style="color:rgba(255,255,255,.5)">Недвижимость под ключ</div>
  <div class="cap">Брендбук · Brand Guidelines</div>
  <div class="cap2">Фирменный стиль строительной и девелоперской компании, Москва</div>
  <div class="snum"><span>KEO GROUP · Брендбук</span><span>01 / 8</span></div>
@@ -101,12 +110,12 @@ p,li{text-wrap:pretty}
 <section class="slide" style="background:#fff"><div class="in">
  <div class="shead"><div class="eyebrow">Логотип</div><h2>Знак и его построение</h2></div>
  <div class="logorow">
-  <div class="logobox"><img src="./images/brand/keo-logo.jpg" alt="Логотип KEO GROUP"></div>
+  <div class="logobox logobox-wm"><div class="wordmark" style="color:var(--ink)">KEO <b>GROUP</b></div><div class="wm-tag" style="color:var(--ink3)">Недвижимость под ключ</div></div>
   <ul class="lpoints">
-   <li><span class="d">01</span><span><b>Монограмма.</b> Буквы K, E и O сведены в один геометрический знак, оранжевый штрих задаёт динамику.</span></li>
-   <li><span class="d">02</span><span><b>Октагон.</b> Буква O в форме восьмиугольника, символ опоры, надёжности и завершённости.</span></li>
-   <li><span class="d">03</span><span><b>Подпись.</b> Под знаком KEO GROUP и тег BUILDING CONNECTIONS AND FUTURES.</span></li>
-   <li><span class="d">04</span><span><b>Охранное поле.</b> Вокруг логотипа держим свободное место не меньше высоты буквы O.</span></li>
+   <li><span class="d">01</span><span><b>Начертание.</b> Жирный геометрический гротеск Archivo Black, уверенный и устойчивый, как сама стройка.</span></li>
+   <li><span class="d">02</span><span><b>Цвет.</b> KEO графит, GROUP оранжевый. Акцент на втором слове, фирменный оранж работает точечно.</span></li>
+   <li><span class="d">03</span><span><b>Подпись.</b> Под знаком тег НЕДВИЖИМОСТЬ ПОД КЛЮЧ капителью, разреженно.</span></li>
+   <li><span class="d">04</span><span><b>Охранное поле.</b> Вокруг логотипа держим свободное место не меньше высоты буквы O.</span></li>
   </ul>
  </div>
  <div class="snum"><span>KEO GROUP · Брендбук</span><span>03 / 8</span></div>
@@ -156,7 +165,7 @@ p,li{text-wrap:pretty}
 </div></section>
 
 <section class="slide dark" style="align-items:center;text-align:center"><div class="in">
- <img src="./images/brand/keo-logo.jpg" alt="KEO GROUP" style="width:min(300px,64vw);margin:0 auto 14px;border-radius:18px;box-shadow:0 24px 56px rgba(0,0,0,.45)">
+ <div class="wordmark" style="font-size:clamp(38px,7vw,52px);margin-bottom:16px">KEO <b>GROUP</b></div>
  <div class="eyebrow" style="color:var(--orange)">Контакты</div>
  <h2 style="margin:10px 0 8px">Построим ваш проект под ключ</h2>
  <div class="contacts">
