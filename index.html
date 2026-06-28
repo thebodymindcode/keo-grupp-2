@@ -57,7 +57,7 @@
   @supports(padding:max(0px)){.wrap{padding-left:max(24px,env(safe-area-inset-left));padding-right:max(24px,env(safe-area-inset-right))}body{padding-bottom:env(safe-area-inset-bottom)}}
   h1,h2,h3,h4{margin:0;font-weight:800;line-height:1.07;letter-spacing:-.02em;color:var(--navy)}
   h1{font-size:clamp(34px,5vw,60px)}
-  .heroh1 span{display:inline}
+  .heroh1 span{display:block}
   @media(min-width:900px){.heroh1 span{display:block}}
   h2{font-size:clamp(28px,3.6vw,44px)}
   h3{font-size:21px}
@@ -109,6 +109,7 @@
   section{padding:80px 0}
   .sec-head{max-width:720px;margin:0 0 42px}
   .grid{display:grid;gap:20px}
+.grid>*{min-width:0}
   .g2{grid-template-columns:repeat(2,1fr)} .g3{grid-template-columns:repeat(3,1fr)} .g4{grid-template-columns:repeat(4,1fr)}
   .card{background:var(--white);border:1px solid var(--line);border-radius:var(--r);padding:28px;box-shadow:var(--sh);transition:transform .25s,box-shadow .25s}
   .card:hover{transform:translateY(-4px);box-shadow:var(--sh-h)}
@@ -315,6 +316,20 @@
     .nav .right .tel{display:none}
     .burger{display:inline-flex;align-items:center;justify-content:center}
   }
+
+.krtc{background:var(--white);border:1px solid var(--line);border-radius:var(--r);overflow:hidden;box-shadow:var(--sh)}
+.krtc-top{background:linear-gradient(180deg,#fff7f0,#fdeede);padding:24px;text-align:center;border-bottom:1px solid var(--line)}
+.krtc-badge{display:inline-block;background:#fff;border:1px solid var(--line);color:var(--blue);font-size:11px;font-weight:800;letter-spacing:.04em;text-transform:uppercase;padding:6px 14px;border-radius:999px}
+.krtc-pct{font-size:clamp(38px,8vw,56px);font-weight:800;color:var(--blue);line-height:1;margin:16px 0 4px}
+.krtc-pcl{font-size:14px;color:var(--ink2)}
+.krtc-body{padding:22px}
+.krtc-head{display:flex;justify-content:space-between;align-items:baseline;gap:10px;font-size:14px;color:var(--ink2);padding-bottom:14px;border-bottom:1px solid var(--line);font-variant-numeric:tabular-nums}
+.krtc-head b{color:var(--navy);white-space:nowrap}
+.krtc-adr{font-size:14.5px;color:var(--navy);background:var(--bg);border-radius:var(--r-sm);padding:13px 14px;margin:14px 0;line-height:1.4}
+.krtc-row{display:flex;justify-content:space-between;align-items:center;gap:12px;background:var(--bg);border-radius:var(--r-sm);padding:13px 14px;margin-bottom:10px;font-size:14.5px;color:var(--ink2);font-variant-numeric:tabular-nums}
+.krtc-row>span{flex:1 1 auto}
+.krtc-row s{color:var(--ink3)}.krtc-row b{font-weight:800;white-space:nowrap}
+.krtc-gain{background:#eaf7ef;color:#1a8a4f;margin-bottom:0}.krtc-gain b{color:#1a8a4f}
 </style>
 </head>
 <body>
@@ -1223,6 +1238,26 @@ const RICH={
   faq:[["Почему Росреестр не регистрирует аренду","Назначение помещения должно соответствовать виду разрешённого использования участка, это прямо следует из ст. 37 ГрК РФ. Если в помещении планируется деятельность, которую ВРИ участка не предусматривает, регистратор откажет: землю нельзя использовать вразрез с её разрешённым назначением. На что смотреть в первую очередь: совпадение фактического использования с ВРИ, иначе под угрозой не только аренда, но и риск штрафа по ст. 8.8 КоАП РФ."],["Разница ВРИ с ПЗЗ и без","Если нужный вид использования уже есть в градостроительном регламенте зоны по ПЗЗ, его можно выбрать заявительно, без долгих согласований. Если же его в регламенте нет, придётся менять сами Правила землепользования и застройки, а это путь через ДГП и Градостроительно-земельную комиссию, с публичной процедурой и сроками. Поэтому первый шаг всегда один: проверить регламент зоны, от ответа зависит, простая это история или долгий проект."],["Что такое ПМТ","ПМТ это проект межевания территории, документ, который определяет границы участков на местности. Он нужен там, где участок предстоит образовать заново, перераспределить или присоединить часть смежной земли. Без утверждённого ПМТ такие действия не пройдут, потому что границы должны быть юридически зафиксированы. Нюанс: ПМТ это публичная процедура со своими сроками, поэтому его лучше закладывать в план заранее, а не вспоминать перед подачей."],["С чего начать","Для старта достаточно кадастрового номера участка: по нему мы видим зону, текущий ВРИ и базовые ограничения. Дальше поднимаем выписку ЕГРН, ГПЗУ и правоустанавливающие документы, чтобы понять реальную картину и выбрать маршрут смены ВРИ. На что смотреть с самого начала: совпадает ли желаемое использование с регламентом зоны, потому что именно это решает, пойдём мы коротким заявительным путём или через изменение ПЗЗ."]]},
 };
 function courtFlag(){return `<section style="padding-top:0"><div class="wrap"><div class="sec-head"><div class="eyebrow" style="color:#ef7320">Судебная практика</div><h2>Выигранные дела о сносе</h2><p class="lede" style="margin-top:12px">Реальные арбитражные дела с номерами. По каждому объекту мы подготовили здание к судебной экспертизе и добились отказа ДГИ в иске. Любое дело можно проверить в картотеке арбитражных дел kad.arbitr.ru по номеру.</p></div><div class="grid g3">${CASES_COURT.map(courtCard).join('')}</div></div></section>`;}
+const KRT_CASES=[
+ {num:"А40-205939/24",adr:"Москва, ул. Судакова, д. 4, помещение 4П",area:"99,2 м²",dgi:"8 533 125",exp:"24 118 250",add:"15 585 125",pct:"+183%"},
+ {num:"А40-225767/23",adr:"Москва, Варшавское шоссе, д. 29, пом. 10/1",area:"74 м²",dgi:"10 035 710",exp:"19 099 568",add:"9 063 858",pct:"+90%"},
+ {num:"А40-78749/23",adr:"Москва, проспект Маршала Жукова, д. 25, корп. 1",area:"61,2 м²",dgi:"29 724 000",exp:"54 210 911",add:"24 486 911",pct:"+82%"},
+ {num:"А40-256599/23",adr:"Москва, Дмитровское шоссе, д. 61, корп. 1, пом. 1/1",area:"174,6 м²",dgi:"32 043 550",exp:"58 258 205",add:"26 214 655",pct:"+82%"},
+];
+function krtCases(){return `<section style="padding-top:0"><div class="wrap">
+ <div class="sec-head"><div class="eyebrow" style="color:var(--blue)">Портфолио</div><h2>Реальные дела по КРТ</h2>
+  <p class="lede" style="margin-top:12px">Город предлагает компенсацию по своей оценке, она занижена. Через суд и независимую экспертизу добиваемся справедливой суммы. Вот выигранные дела, каждое можно проверить в картотеке kad.arbitr.ru по номеру.</p></div>
+ <div class="grid g2">${KRT_CASES.map(k=>`<div class="krtc">
+   <div class="krtc-top"><span class="krtc-badge">✓ Решение суда</span><div class="krtc-pct">${esc(k.pct)}</div><div class="krtc-pcl">увеличение компенсации</div></div>
+   <div class="krtc-body">
+    <div class="krtc-head"><span>Дело № ${esc(k.num)}</span><b>${esc(k.area)}</b></div>
+    <div class="krtc-adr">${esc(k.adr)}</div>
+    <div class="krtc-row"><span>Оценка ДГИ (ООО «Аверс»)</span><s>${esc(k.dgi)} ₽</s></div>
+    <div class="krtc-row"><span>Судебная экспертиза</span><b style="color:var(--blue)">${esc(k.exp)} ₽</b></div>
+    <div class="krtc-row krtc-gain"><span>Дополнительно получено</span><b>+${esc(k.add)} ₽</b></div>
+   </div></div>`).join('')}</div>
+ <p class="muted" style="margin-top:22px;font-size:14px">Итого по этим делам взыскано сверх оценки города более 75 млн рублей, средний прирост компенсации +109%. Результат каждого дела закреплён решением суда.</p>
+</div></section>`;}
 function richLanding(slug){const d=RICH[slug];if(!d)return null;const s=svcBySlug[slug];const g=groupByKey(d.group);const c=g.c;const gr=GROUP_RICH[d.group]||{};
  const rel=svcByGroup(d.group).filter(x=>x.slug!==slug).slice(0,3);
  return `<section class="hero"><div class="wrap"><div class="row">
@@ -1237,6 +1272,7 @@ function richLanding(slug){const d=RICH[slug];if(!d)return null;const s=svcBySlu
  <section style="padding-top:10px"><div class="wrap"><div class="sec-head"><div class="eyebrow" style="color:${c}">В цифрах</div><h2>Результаты направления</h2></div>
    <div class="trust" style="padding:0"><div class="wrap" style="padding:0"><div class="row">${d.stats.map((x,i)=>`<div class="t${i===0?' hl':''}">${i===0?`<b style="color:#fff">${esc(x[0])}</b><span style="color:#fff">${esc(x[1])}</span>`:`<b>${esc(x[0])}</b><span>${esc(x[1])}</span>`}</div>`).join('')}</div></div></div>
  </div></section>
+ ${slug==='krt-zashchita'?krtCases():''}
  <section style="padding-top:0"><div class="wrap"><div class="sec-head"><div class="eyebrow" style="color:${c}">Зачем это вам</div><h2>Что решаем</h2></div>
    <div class="grid g2">${d.pains.map(x=>`<div class="card" style="display:flex;gap:14px;align-items:flex-start"><span style="flex:0 0 auto;width:30px;height:30px;border-radius:9px;background:#fdeaea;color:#e5484d;display:flex;align-items:center;justify-content:center;font-weight:800">!</span><p class="muted" style="margin:0;font-size:15px">${esc(x)}</p></div>`).join('')}</div>
  </div></section>
